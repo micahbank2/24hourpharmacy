@@ -1,0 +1,8 @@
+.env
+node_modules/
+vendor/
+*.log
+.DS_Store
+data/pharmacies/raw/*
+!data/pharmacies/raw/.gitkeep
+wordpress/plugin/24hr-pharmacy-tools/assets/js/*.js
