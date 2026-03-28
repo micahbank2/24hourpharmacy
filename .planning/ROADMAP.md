@@ -17,7 +17,7 @@
 **Plans:** 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Complete plugin foundation (CPTs, settings, schema, shortcodes, theme config)
+- [x] 01-01-PLAN.md — Complete plugin foundation (CPTs, settings, schema, shortcodes, theme config)
 **Deliverables:**
 - `class-post-types.php` registers City and Pharmacy CPTs with correct rewrite rules
 - `class-settings.php` admin page stores all API keys and affiliate codes in WP options table

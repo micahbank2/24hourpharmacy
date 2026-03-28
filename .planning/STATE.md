@@ -1,16 +1,30 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+current_phase: 01
+status: unknown
+last_updated: "2026-03-28T23:27:46.699Z"
+progress:
+  total_phases: 8
+  completed_phases: 1
+  total_plans: 1
+  completed_plans: 1
+---
+
 # Project State: 24HourPharmacy.com
 
 **Last updated:** 2026-03-28
-**Current phase:** Pre-execution (planning complete, no phase started)
-**Overall status:** Ready to execute Phase 1
+**Current phase:** 01
+**Overall status:** Phase 1 Plan 01 complete — awaiting Task 3 human verification checkpoint before Phase 2
+
+**Stopped at:** Completed 01-01-PLAN.md (Task 3 is checkpoint:human-verify — deploy to Hostinger and verify)
 
 ---
 
-## Current Phase: None (Phase 1 queued)
+## Current Phase: 01 — WordPress Plugin Foundation
 
-Phase 1 has not started. All planning artifacts are complete. The codebase is in scaffold/stub state — nothing functional exists yet.
-
-**To begin:** Run `/gsd:plan-phase 1`
+Plan 01 (01-01-PLAN.md) executed. All auto tasks done. Task 3 checkpoint pending user verification.
 
 ---
 
@@ -18,7 +32,7 @@ Phase 1 has not started. All planning artifacts are complete. The codebase is in
 
 | Phase | Status | Started | Completed | Notes |
 |-------|--------|---------|-----------|-------|
-| — | — | — | — | No phases executed yet |
+| 01 | in-progress | 2026-03-28 | — | Plan 01 tasks 1+2 complete; Task 3 checkpoint awaiting deploy |
 
 ---
 
@@ -48,32 +62,30 @@ Phase 1 has not started. All planning artifacts are complete. The codebase is in
 None currently. Phase 1 is fully plannable from the existing codebase scaffold.
 
 **Known future blockers (not blocking now):**
+
 - Affiliate program approvals (Phase 6) — most programs require a live site with real content. Timeline: 1-14 days per program after submission. Cannot accelerate.
 - AdSense approval (Phase 6) — requires sufficient content + quality review. Typically 1-2 weeks.
 - Google Business Profile verification (Phase 7) — physical address required for postcard verification.
 
 ---
 
+## Decisions Made (Phase 01)
+
+| Decision | Rationale |
+|----------|-----------|
+| Register scripts unconditionally (file_exists guard), enqueue in shortcode callback | wp_localize_script handle must exist before shortcodes process at priority 20 |
+| FAQPage schema stub outputs empty mainEntity array | Phase 7 populates without hook changes; schema type discoverable immediately |
+| wp_localize_script at priority 20 | Plugin register_scripts runs at default priority 10; localize must follow |
+
+---
+
 ## Key Context for Next Agent
 
-**What exists:** Scaffold only. All PHP plugin class files are stubs (ABSPATH check + comment only). All widget directories contain only `.gitkeep`. WordPress theme templates are stubs. Python scripts are stub docstrings.
+**What exists (after Plan 01):** All 6 PHP files are fully implemented. Plugin has CPT registration, settings page, JSON-LD schema, compliance shortcodes, widget shortcode infrastructure, and theme config passthrough.
 
-**What works:** WordPress core is live on Hostinger. GeneratePress Pro theme is active. Child theme loads correctly. The plugin is installed but has no functionality.
+**What works:** Plugin code is committed to git. Deploy to Hostinger (zip upload) to verify Task 3 checklist before Phase 2.
 
-**What Phase 1 must build:**
-1. `class-post-types.php` — register City and Pharmacy CPTs with rewrite rules
-2. `class-settings.php` — WP admin settings page for API keys + affiliate codes
-3. `class-schema.php` — JSON-LD output (LocalBusiness/Pharmacy, WebPage, FAQPage)
-4. `class-shortcodes.php` — `[medical_disclaimer]` and `[affiliate_disclosure]` shortcodes
-5. `functions.php` — enqueue widget bundles conditionally, pass config via `wp_localize_script`
-6. `24hr-pharmacy-tools.php` — wire all classes with correct `add_action` hooks
-
-**Architecture constraints for Phase 1:**
-- PHP must follow WordPress Coding Standards (WPCS)
-- No framework dependencies — native WP functions only
-- API keys and affiliate codes stored in WP options table (`get_option()` / `update_option()`)
-- Never hardcoded in PHP files
-- Plugin uses `ABSPATH` guard on every include file
+**Phase 2 prerequisite:** Task 3 human-verify checkpoint must pass before Phase 2 (PHP templates) begins.
 
 ---
 
