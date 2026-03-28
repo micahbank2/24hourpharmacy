@@ -470,6 +470,10 @@ const PHASES = [
       { id: 'f25', text: 'Legal: never segment email list by medication name or medical condition', hint: 'HIPAA does not apply to this site directly (no PHI handled), but if you collect emails and later segment by condition or medication type, a data breach could put you in a legal gray zone. Keep email segmentation to behavior only: discount card users, insurance seekers, general health. Never tag subscribers by drug name, diagnosis, or medical condition.' },
       { id: 'f26', text: 'Legal: use pharmacy brand names descriptively in content, not in URLs or domain paths', hint: 'Using "Walgreens" or "CVS" in URLs (e.g. /walgreens-24-hour/) is riskier than using them in page titles and body copy. Descriptive use in content is generally fine under nominative fair use. Trademark-specific URLs invite cease-and-desist letters. Keep URLs generic: /24-hour-pharmacy-chicago/ not /24-hour-walgreens-chicago/.' },
       { id: 'f27', text: 'Budget for Hostinger VPS upgrade before hitting 25K sessions/month', hint: 'Shared hosting ToS often prohibits sustained high-traffic commercial affiliate sites. At 25K+ sessions/month, resource usage from pharmacy finder API calls, React widget loads, and page generation could trigger throttling or ToS enforcement. Hostinger Cloud Startup ($9-12/mo) or a basic VPS is the upgrade path. Plan for it before you need it, not after.' },
+      { id: 'f28', text: 'Legal: never make unsubstantiated savings claims — "save up to 80%" requires real data', hint: 'FTC rules require that all quantitative claims be substantiated. "Save up to 80% on prescriptions" is a common affiliate marketing phrase, but using it on your site makes you the publisher responsible for backing it up. Either source the data (GoodRx/CMS drug price studies are publicly available) or use softer language: "Compare prices and save on your prescriptions." Unsubstantiated claims on a YMYL health site are an FTC priority target.' },
+      { id: 'f29', text: 'Legal: review state pharmacy advertising laws before running paid ads in CA, NY, TX, FL', hint: 'California, New York, Texas, and Florida have regulations on advertising pharmacy services and prescription drug pricing. For an information/referral site this is low risk, but if you run paid ads making specific savings claims or listing specific drug prices in these states, you are in regulated territory. Consult a health law attorney before running paid campaigns targeting these states with price-specific ad copy.' },
+      { id: 'f30', text: 'Legal: never list any pharmacy or telehealth service that dispenses controlled substances without a valid prescription', hint: 'The DEA regulates online pharmacies under the Ryan Haight Online Pharmacy Consumer Protection Act. Listing a pharmacy or telehealth provider that dispenses controlled substances (Adderall, opioids, benzodiazepines) without requiring a valid in-person prescription exposes you to DEA enforcement risk even as a referral site. Stick to legitimate, DEA-registered telehealth providers (Teladoc, MDLive, Hims, Ro). Never list pill mills.' },
+      { id: 'f31', text: 'Compliance: review MediaAlpha and EverQuote publisher compliance requirements before running insurance leads', hint: 'Insurance lead gen is one of the most FTC-scrutinized affiliate categories. MediaAlpha and EverQuote both have publisher compliance guides covering: required disclosures on every insurance CTA, prohibited claims ("free insurance", "guaranteed coverage"), call recording consent for click-to-call, and TCPA compliance for lead form submissions. Read their publisher compliance docs before going live. A compliance violation can result in clawbacks and account termination.' },
     ]
   },
   {
@@ -516,6 +520,8 @@ const PHASES = [
       { id: 'b33', text: 'Build and publish free "Open Now" JSON API endpoint: /api/open-now?pharmacy=cvs&city=chicago', isNew: true, hint: 'Publish a free, publicly accessible endpoint that returns whether a given pharmacy chain is currently open in a given city. Other local sites, developers, and LLM training crawlers will embed and cite it. LLMs are trained to cite structured data sources and APIs. Backlinks from developer communities are among the highest-authority links available. Zero monetization needed — the citations are the ROI.' },
       { id: 'b34', text: 'Set up Make.com automation to monitor Reddit for pharmacy/prescription keywords and alert you', isNew: true, hint: 'Build a Make.com scenario: monitor r/personalfinance, r/povertyfinance, r/Frugal, r/ChronicIllness, r/Assistance for posts mentioning "prescription savings", "pharmacy", "GoodRx", "discount card". Send Slack or email alert when triggered. These threads rank on Google, get cited by LLMs, and represent your highest-intent audience. Reply with genuinely helpful answers — no spam.' },
       { id: 'b35', text: 'Create Google Business Profile for 24HourPharmacy.com as a Health Information Service', isNew: true, hint: 'Most content sites never attempt this. Create a GBP listing under category "Health Information Service" or "Medical Information Service." A verified GBP can surface your site in local pack results for "[city] 24 hour pharmacy" even without traditional SEO ranking. Requires a real business address (use your LLC address). Free, takes 20 minutes, and no other pharmacy information site is doing this.' },
+      { id: 'b36', text: 'Add browser push notification opt-in: "Notify me when a 24-hour pharmacy near me opens"', isNew: true, hint: 'Push notifications have 10-40% click rates vs 2-3% for email. Use OneSignal (free tier) for WordPress push notifications. The use case is high-value: someone at 2am who strikes out on pharmacy options opts in, then gets notified when their nearest 24hr pharmacy opens at 6am. Even a small subscriber list converts aggressively because the intent moment is acute. OneSignal free tier supports up to 10K subscribers.' },
+      { id: 'b37', text: 'Publish /drug-disposal/ locator page: where to safely dispose of expired or unused medications', isNew: true, hint: 'DEA-registered drug take-back kiosks exist at most Walgreens and CVS locations — the data is public. This page has high search volume, zero monetization, but enormous authority and linkbait value. Pharmacies, health departments, and government sites link to good drug disposal resources. Those backlinks flow equity to your affiliate pages. Also positions you as a public-health resource, not just an affiliate site — strong E-E-A-T signal for YMYL.' },
     ]
   },
   {
@@ -719,6 +725,10 @@ const PLAYBOOKS = [
       {abbr:'OM',name:'OrderlyMeds',commission:'$75 CPA',color:'#0d9488',url:'https://orderlymeds.com/affiliate-program/get-started/'},
       {abbr:'FR',name:'Fridays Health',commission:'$300 CPA',color:'#16a34a',url:'https://www.joinfridays.com/'},
       {abbr:'HI',name:'Hims (weight loss)',commission:'$35-88 CPA via Impact',color:'#1f2937',url:'https://app.impact.com/'},
+      {abbr:'CA',name:'Calibrate',commission:'CPA — contact direct',color:'#0891b2',url:'https://www.joincalibrate.com/'},
+      {abbr:'FH',name:'Form Health',commission:'CPA — contact direct',color:'#6366f1',url:'https://www.formhealth.co/'},
+      {abbr:'NM',name:'Noom Med',commission:'CPA via Impact',color:'#16a34a',url:'https://app.impact.com/'},
+      {abbr:'LD',name:'Lilly\'s LillyDirect',commission:'Direct-to-consumer — check for affiliate',color:'#dc2626',url:'https://www.lillydirect.com/'},
     ],
     marketingPlan:['Build /telehealth/glp1/ comparison page: Mochi vs OrderlyMeds vs Fridays','Target: "semaglutide without insurance", "GLP-1 online doctor", "ozempic alternative telehealth"','Write "My pharmacy is out of Ozempic - what now?" emergency guide with telehealth CTA','Add GLP-1 telehealth CTA to city pages in high-obesity metros (Houston, Dallas, Phoenix, Chicago)','Create "How much does semaglutide really cost with and without insurance" evergreen guide'],
     techStack:['Standard affiliate links via Impact or direct programs','Lasso for link management','No special tech required - pure content play'],
@@ -1218,6 +1228,26 @@ const PLAYBOOKS = [
       {id:'pbt_ap4',text:'Add Amazon Pharmacy delivery option to all city pages',done:false},
     ]
   },
+  {
+    id:'pb29', priority:10, name:'Vision Care / Optical', tier:'niche',
+    tierLabel:'Month 4-5', potential:'$200-800/mo', timing:'Content Month 4',
+    color:'#0891b2', newStream:true,
+    summary:'1-800-Contacts, Warby Parker, and Clearly all have affiliate programs. Your pharmacy audience buys contacts and glasses at the same locations they fill prescriptions — CVS, Costco, Walmart Vision. "Can I fill my contact lens prescription at CVS?" is a real query. Low competition, evergreen, and the audience overlap is nearly perfect.',
+    why:['Same pharmacy audience — people already buying health products, cost-conscious','1-800-Contacts pays 6-10% on average orders of $60-120 = $6-12/sale','Warby Parker affiliate via CJ — premium brand, high average order value','Zero other pharmacy sites have made this connection'],
+    programs:[
+      {abbr:'1C',name:'1-800-Contacts',commission:'6-10% per order',color:'#0891b2',url:'https://www.1800contacts.com/'},
+      {abbr:'WP',name:'Warby Parker',commission:'CJ Affiliate',color:'#1f2937',url:'https://members.cj.com/'},
+      {abbr:'CL',name:'Clearly',commission:'Contact lens affiliate',color:'#16a34a',url:'https://www.clearly.ca/affiliates'},
+    ],
+    marketingPlan:['Write "Can I fill my contact lens prescription at CVS, Walgreens, or Costco?"','Build /vision-care/ hub: where to buy contacts, how to save on glasses','Target: "contact lens prescription at pharmacy", "cheapest contacts online"','Internal link from city pages (pharmacies with vision centers)'],
+    techStack:['CJ Affiliate for Warby Parker','Direct affiliate program for 1-800-Contacts','Lasso for link management'],
+    todos:[
+      {id:'pbt_vc1',text:'Apply for 1-800-Contacts affiliate program',done:false},
+      {id:'pbt_vc2',text:'Apply for Warby Parker via CJ Affiliate',done:false},
+      {id:'pbt_vc3',text:'Write "Can I fill my contact lens prescription at CVS/Walgreens?" guide',done:false},
+      {id:'pbt_vc4',text:'Build /vision-care/ savings hub page',done:false},
+    ]
+  },
 ];
 
 const LINK_GROUPS = [
@@ -1269,6 +1299,8 @@ const LINK_GROUPS = [
       { abbr:'EH', label:'eHealth Partners', desc:'ACA/Medicare, $10-75/app', url:'https://ehealthinsurance.com/info/site-publisher', color:'#0369a1' },
       { abbr:'GH', label:'GoHealth', desc:'Medicare Advantage, $100-200+ CPA', url:'https://www.gohealth.com/medicare/', color:'#6366f1' },
       { abbr:'SQ', label:'SelectQuote', desc:'Health + Medicare leads', url:'https://www.selectquote.com/about/partners/', color:'#0d9488' },
+      { abbr:'HM', label:'HealthMarkets', desc:'ACA + Medicare, independent broker network', url:'https://www.healthmarkets.com/partners/', color:'#0891b2' },
+      { abbr:'BT', label:'Benefytt', desc:'Short-term health plans, CPA', url:'https://www.benefytt.com/', color:'#475569' },
     ]
   },
   {
@@ -1281,6 +1313,7 @@ const LINK_GROUPS = [
       { abbr:'SV', label:'Solv Health', desc:'Urgent care bookings affiliate', url:'https://www.solvhealth.com/partners', color:'#f97316' },
       { abbr:'SE', label:'Sesame Care', desc:'Pay-per-visit marketplace, $15-30 CPA', url:'https://sesamecare.com/', color:'#0d9488' },
       { abbr:'CB', label:'Cerebral', desc:'Mental health, $50+ CPA', url:'https://cerebral.com/', color:'#6366f1' },
+      { abbr:'SM', label:'SteadyMD', desc:'Concierge primary care telehealth, CPA direct', url:'https://steadymd.com/', color:'#0369a1' },
     ]
   },
   {
@@ -1304,6 +1337,10 @@ const LINK_GROUPS = [
       { abbr:'MO', label:'Mochi Health', desc:'GLP-1, $90 CPA', url:'https://mochi.health/affiliate', color:'#7c3aed' },
       { abbr:'OM', label:'OrderlyMeds', desc:'GLP-1, $75 CPA', url:'https://orderlymeds.com/affiliate-program/get-started/', color:'#0d9488' },
       { abbr:'FR', label:'Fridays Health', desc:'GLP-1, $300 CPA (high volume)', url:'https://www.joinfridays.com/', color:'#16a34a' },
+      { abbr:'CA', label:'Calibrate', desc:'GLP-1 + metabolic health, CPA direct', url:'https://www.joincalibrate.com/', color:'#0891b2' },
+      { abbr:'FH', label:'Form Health', desc:'GLP-1 telehealth, CPA direct', url:'https://www.formhealth.co/', color:'#6366f1' },
+      { abbr:'NM', label:'Noom Med', desc:'GLP-1 + coaching, CPA via Impact', url:'https://app.impact.com/', color:'#16a34a' },
+      { abbr:'LL', label:'LillyDirect', desc:'Eli Lilly direct-to-consumer — verify affiliate', url:'https://www.lillydirect.com/', color:'#dc2626' },
     ]
   },
   {
