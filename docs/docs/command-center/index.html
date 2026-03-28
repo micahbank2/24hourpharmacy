@@ -463,6 +463,10 @@ const PHASES = [
       { id: 'f18', text: 'Add site to Microsoft Clarity for heatmaps and session recordings', hint: 'Free. Shows exactly where mobile users tap, scroll depth on city pages, rage clicks. Essential for understanding the 70%+ mobile audience. Install via plugin or paste snippet in header.' },
       { id: 'f19', text: 'Set up UptimeRobot monitoring (free, 5-minute checks, email/SMS alerts)', hint: '2-minute setup at uptimerobot.com. Sends alert when site goes down. Downtime during peak insurance season (Oct-Jan) is expensive.' },
       { id: 'f20', text: 'Evaluate Exa API (exa.ai) as the pharmacy finder search layer — instead of static location data, Exa can power live on-site search and build the initial nationwide database of verified 24-hour pharmacy locations. This turns the site into a functional tool, not just content, which reduces YMYL exposure and creates a defensible moat. Test free tier before committing to $49/mo Core plan.', hint: 'Exa is an AI-powered web search API with semantic search and structured data extraction. The Websets product can bulk-compile verified lists of 24-hour pharmacy locations with source links. Using it as the search backend means your finder tool stays current without manual data maintenance. Start at exa.ai — free tier available before committing.' },
+      { id: 'f21', text: 'Add site to Bing Webmaster Tools and submit sitemap', hint: 'Free at bing.com/webmasters. Bing has 6-7% market share but far lower health content competition than Google. Microsoft Edge now shows AI-generated sidebar answers that pull from Bing index — getting indexed here is increasingly valuable. 5-minute setup.' },
+      { id: 'f22', text: 'Enable IndexNow in RankMath settings', hint: 'IndexNow protocol instantly pushes new page URLs to Bing and Yandex the moment you publish. New city pages get indexed in hours instead of weeks. Enable in RankMath > General Settings > IndexNow. Free and takes 30 seconds.' },
+      { id: 'f23', text: 'ADA/WCAG 2.1 compliance audit before launch — fix contrast ratios, keyboard navigation, alt text', hint: 'Health sites have elevated ADA lawsuit risk. Demand letters for WCAG non-compliance are a cottage industry. Use WAVE (wave.webaim.org) for a free audit. Minimum: all images have alt text, color contrast passes AA standard (4.5:1), keyboard navigation works on all interactive elements, all form inputs have labels. Building accessible from the start is far cheaper than retrofitting.' },
+      { id: 'f24', text: 'Implement separate cookie consent flows: necessary vs analytics vs advertising', hint: 'A generic "we use cookies" banner does not satisfy CCPA. California visitors must be able to opt out of advertising cookies (AdSense) separately from analytics (GA4). CookieYes supports this with a proper "Do Not Sell My Data" flow. Most free WP cookie plugins get this wrong and expose you to CCPA liability.' },
     ]
   },
   {
@@ -500,6 +504,12 @@ const PHASES = [
       { id: 'b24', text: 'Apply for PetMeds affiliate program', isNew: true, hint: 'petmeds.org affiliate via Commission Junction. Pet owners filling human prescriptions also fill pet prescriptions at the same pharmacies. Very low competition content: "Can I fill my pet\'s prescription at Walgreens or CVS?" is a real high-volume query.' },
       { id: 'b25', text: 'Apply for Brightside mental health affiliate ($65+ per referral)', isNew: true, hint: 'Apply at brightside.com. Major insurance accepted including Medicare and Medicaid. People managing chronic illness fill prescriptions regularly and have statistically elevated rates of anxiety and depression. "What to do when your pharmacy doesn\'t have your antidepressant in stock" is a real query that converts to telehealth referrals.' },
       { id: 'b26', text: 'Apply for EverlyWell at-home testing affiliate (4.8-9.6% commission, 45-day cookie)', isNew: true, hint: 'Apply at everlywell.com/affiliates. Direct pitch for your uninsured audience: "can\'t afford a doctor visit to get a test ordered? Here\'s how to test at home." Covers thyroid panels, food sensitivity, STI tests, hormones. High average order value, long cookie window.' },
+      { id: 'b27', text: 'Set up white-label "24HourPharmacy Savings Card" — publish as download on every city page', isNew: true, hint: 'Highest ROI single task on the list. Contact LowerMyRx or National Drug Card about their white-label program. They provide a BIN/PCN/Group tied to your affiliate ID. Design the card in Canva, publish as a PDF download on every city page. Every user who fills a prescription with it pays you — permanently, on every refill, for years.' },
+      { id: 'b28', text: 'Write GoodRx arbitrage content cluster: "GoodRx price wrong at pharmacy", "Best GoodRx alternatives", "GoodRx vs LowerMyRx"', isNew: true, hint: 'GoodRx has documented reliability issues — prices shown often differ from what pharmacies charge. Hundreds of Reddit threads confirm this. Frustrated GoodRx users are your highest-converting audience for discount card alternatives. Three targeted articles can drive significant early affiliate revenue before you have broad organic traffic.' },
+      { id: 'b29', text: 'Publish /glp1-shortage-tracker/ — manually updated weekly with semaglutide/tirzepatide availability by chain', isNew: true, hint: 'Most-searched pharmacy topic right now and no site has a dedicated, regularly-updated resource. A 20-minute weekly update ranks because Google rewards freshness for shortage queries. Add FAQPage schema ("Is Ozempic available at CVS?"). The telehealth CTA on this page drives your highest-CPA conversions ($90-300).' },
+      { id: 'b30', text: 'Publish /data/ page with downloadable CSV of US 24-hour pharmacy locations', isNew: true, hint: 'LLMs are trained on structured, machine-readable data and frequently cite CSV/dataset pages as authoritative sources. Blog posts do not get cited — data does. Even a rough dataset page becomes a citation magnet for ChatGPT, Perplexity, and Claude answers about pharmacy locations. Immediate E-E-A-T signal.' },
+      { id: 'b31', text: 'Set up n8n self-hosted automation for pharmacy data refresh pipeline', isNew: true, hint: 'n8n is a free, self-hosted Make.com alternative that runs on a $6/mo VPS. Build the workflow: Firecrawl monitors pharmacy chain sites for hours changes → diffs against cached data → pushes updates to WordPress via REST API. This automates the data freshness problem before it becomes a 500-city manual nightmare. Install at n8n.io.' },
+      { id: 'b32', text: 'Use DataForSEO to pull search volumes for all city + drug query variations ($15 total)', isNew: true, hint: 'DataForSEO costs $0.0025/keyword. Pull search volumes for every "[city] 24 hour pharmacy" variation (50+ cities) plus every target drug name. Total cost under $15. Use results to prioritize which city pages and FDA NDC drug pages to build first. Far cheaper than Ahrefs for this one-time research task.' },
     ]
   },
   {
@@ -627,6 +637,14 @@ const MILESTONES = [
   { id: 'ms23', text: 'Email list reaches 2,000 subscribers' },
   { id: 'ms24', text: 'First sponsored newsletter deal closed' },
   { id: 'ms25', text: 'Cited by ChatGPT or Perplexity for a pharmacy query' },
+  { id: 'ms26', text: 'White-label branded 24HourPharmacy Savings Card live and distributed' },
+  { id: 'ms27', text: 'GLP-1 shortage tracker published and indexed' },
+  { id: 'ms28', text: 'Spanish city pages live (top 5 cities)' },
+  { id: 'ms29', text: 'n8n data pipeline live — zero-touch pharmacy data refresh' },
+  { id: 'ms30', text: 'FDA NDC drug pages live (top 100 drugs)' },
+  { id: 'ms31', text: 'GoodRx arbitrage content cluster published (3+ articles)' },
+  { id: 'ms32', text: 'GoHealth Medicare integration live before October' },
+  { id: 'ms33', text: 'Compound pharmacy locator page live' },
 ];
 
 const PLAYBOOKS = [
@@ -921,6 +939,198 @@ const PLAYBOOKS = [
       {id:'pbt_nl5',text:'Reach 2,000 subscribers and pitch first sponsorship',done:false},
     ]
   },
+  {
+    id:'pb15', priority:0, name:'White-Label Branded Rx Card', tier:'immediate',
+    tierLabel:'Do this week', potential:'Lifetime recurring commissions', timing:'1-day setup, earns forever',
+    color:'#16a34a', newStream:true,
+    summary:'Most discount card affiliates (LowerMyRx, NDC) let you create a branded "24HourPharmacy Savings Card" with your BIN/PCN/Group codes. Users download it, put it in their wallet, and every refill for years pays you — without any further action. This is the stickiest possible monetization on the site.',
+    why:['Permanent attribution — your code stays in the pharmacy system forever','Users keep physical/digital cards for years = multi-year passive income per download','Branded artifact builds site credibility beyond a plain affiliate link','Zero ongoing effort after setup — every city page, email, and social post distributes it'],
+    programs:[
+      {abbr:'LM',name:'LowerMyRx White Label',commission:'Up to $4/fill, permanent attribution',color:'#16a34a',url:'https://affiliate.lowermyrx.com/'},
+      {abbr:'ND',name:'National Drug Card White Label',commission:'$2-2.50/fill',color:'#0d9488',url:'https://ndcaffiliate.com/'},
+    ],
+    marketingPlan:['Create "24HourPharmacy Savings Card" PDF — downloadable from every city page','Add to every email as permanent attachment in welcome sequence','Promote as free lead magnet: "Your free pharmacy savings card — works at 60,000+ pharmacies"','Feature on savings hub above the fold'],
+    techStack:['LowerMyRx or NDC white-label setup (they provide the card template)','Canva for branded PDF design','GA4 conversion event: card_download'],
+    todos:[
+      {id:'pbt_wl1',text:'Contact LowerMyRx about white-label card program — get branded BIN/PCN/Group',done:false},
+      {id:'pbt_wl2',text:'Design "24HourPharmacy Savings Card" PDF in Canva',done:false},
+      {id:'pbt_wl3',text:'Add card download to every city page above the fold',done:false},
+      {id:'pbt_wl4',text:'Add card as attachment in MailerLite welcome email',done:false},
+      {id:'pbt_wl5',text:'Track card_download as GA4 conversion event',done:false},
+    ]
+  },
+  {
+    id:'pb16', priority:3, name:'Patient Assistance Programs (PAPs)', tier:'immediate',
+    tierLabel:'Start Month 1', potential:'$300-1.5K/mo', timing:'Content Month 1-2, earns evergreen',
+    color:'#0369a1', newStream:true,
+    summary:'"Free [drug name] for uninsured" is one of the highest-intent searches on the internet. Manufacturer copay cards from Pfizer, J&J, AstraZeneca, and Lilly cover thousands of brand-name drugs. NeedyMeds aggregates PAPs for 10,000+ drugs. These users have zero other options and convert extremely high.',
+    why:['Highest-intent audience available — person who cannot afford medication and is searching for help','NeedyMeds has an affiliate/referral program','PAP content builds massive E-E-A-T authority — Google rewards genuinely helpful YMYL content','Drives discount card commissions as fallback when user earns too much for PAP income limits'],
+    programs:[
+      {abbr:'NM',name:'NeedyMeds',commission:'Affiliate/referral — contact for rates',color:'#0369a1',url:'https://www.needymeds.org/'},
+      {abbr:'RA',name:'RxAssist',commission:'Free directory — authority play',color:'#16a34a',url:'https://www.rxassist.org/'},
+    ],
+    marketingPlan:['Build /savings/patient-assistance/ hub listing top manufacturer PAP programs','Write "How to get [drug name] for free" guides for top 20 brand-name drugs','Target: "[drug name] manufacturer coupon", "[drug name] patient assistance program"','Use discount card as fallback CTA when user earns too much for PAP'],
+    techStack:['Static content + links to manufacturer PAP pages','NeedyMeds API if available','Lasso for link management'],
+    todos:[
+      {id:'pbt_pap1',text:'Build /savings/patient-assistance/ hub listing top manufacturer PAP programs',done:false},
+      {id:'pbt_pap2',text:'Contact NeedyMeds about affiliate/referral partnership',done:false},
+      {id:'pbt_pap3',text:'Write guides for top 10 brand-name drugs: "[drug] for free if uninsured"',done:false},
+      {id:'pbt_pap4',text:'Add PAP CTA to all drug price comparison pages as premium-tier option',done:false},
+    ]
+  },
+  {
+    id:'pb17', priority:4, name:'GoodRx Arbitrage Content', tier:'immediate',
+    tierLabel:'Start Month 1', potential:'$500-2K/mo', timing:'Quick ranking, immediate conversion',
+    color:'#dc2626', newStream:true,
+    summary:'GoodRx has a documented reliability problem — prices shown at pharmacies often differ from what GoodRx shows. Hundreds of Reddit threads confirm this frustration. People searching "GoodRx not working" are already frustrated and ready to switch. This is your highest-converting early content cluster.',
+    why:['Frustrated users with maximum intent to switch — converts to your discount card immediately','GoodRx is the dominant player but has real trust issues you can exploit','Content ranks fast because it answers a specific, high-volume complaint','Direct pipeline: "GoodRx problem" search → your article → your branded card download'],
+    programs:[
+      {abbr:'LM',name:'LowerMyRx (conversion target)',commission:'Up to $4/fill',color:'#16a34a',url:'https://affiliate.lowermyrx.com/'},
+      {abbr:'ND',name:'National Drug Card (conversion target)',commission:'$2-2.50/fill',color:'#0d9488',url:'https://ndcaffiliate.com/'},
+    ],
+    marketingPlan:['Write "GoodRx price wrong at my pharmacy — what happened and what to do"','Write "Best GoodRx Alternatives 2026 — honest comparison"','Write "GoodRx vs LowerMyRx vs NeedyMeds — which discount card actually saves more?"','Target: "goodrx not accepted at cvs", "goodrx price higher than expected", "alternatives to goodrx"'],
+    techStack:['Pure content play — no special tech','Lasso for link management','Comparison table component in WordPress'],
+    todos:[
+      {id:'pbt_gx1',text:'Write "GoodRx price wrong at my pharmacy — what to do" guide',done:false},
+      {id:'pbt_gx2',text:'Write "Best GoodRx Alternatives 2026" comparison article',done:false},
+      {id:'pbt_gx3',text:'Write "GoodRx vs LowerMyRx vs NeedyMeds" head-to-head',done:false},
+      {id:'pbt_gx4',text:'Target 15 specific GoodRx complaint queries in Search Console',done:false},
+    ]
+  },
+  {
+    id:'pb18', priority:5, name:'Ozempic / GLP-1 Shortage Tracker', tier:'immediate',
+    tierLabel:'Build this week', potential:'Traffic multiplier for GLP-1 stream', timing:'Publish ASAP — ranks within days',
+    color:'#0891b2', newStream:true,
+    summary:'A manually-updated page tracking semaglutide/tirzepatide availability at Walgreens, CVS, and Costco by region. The most-searched pharmacy topic right now — nobody has a dedicated, regularly-updated resource. A weekly 20-minute update ranks because freshness matters for shortage queries. Feeds your $90-300 CPA GLP-1 telehealth funnel directly.',
+    why:['Most-searched pharmacy topic in 2025-2026 — still not served well by any site','Even manual weekly updates rank because freshness matters for "shortage" queries','Positions you as the authoritative data source, not just another affiliate site','Every shortage visitor gets telehealth CTA = $90-300 CPA opportunity'],
+    programs:[
+      {abbr:'MO',name:'Mochi Health',commission:'$90 CPA',color:'#7c3aed',url:'https://mochi.health/affiliate'},
+      {abbr:'FR',name:'Fridays Health',commission:'$300 CPA',color:'#16a34a',url:'https://www.joinfridays.com/'},
+    ],
+    marketingPlan:['Publish /glp1-shortage-tracker/ with current availability by chain and region','Update weekly — Google rewards freshness for shortage/availability queries','Add FAQPage schema: "Is Ozempic available at [chain]?"','Telehealth CTA: "Pharmacy out of Ozempic? Get it through telehealth in 48 hours"'],
+    techStack:['Simple manually-updated WP page','FAQPage + WebPage JSON-LD','Last-updated timestamp prominently displayed'],
+    todos:[
+      {id:'pbt_st1',text:'Publish /glp1-shortage-tracker/ page with current availability data',done:false},
+      {id:'pbt_st2',text:'Add to weekly recurring tasks: update shortage tracker (20 min)',done:false},
+      {id:'pbt_st3',text:'Add FAQPage schema to shortage tracker page',done:false},
+      {id:'pbt_st4',text:'Add GLP-1 telehealth CTA prominently on shortage tracker',done:false},
+    ]
+  },
+  {
+    id:'pb19', priority:6, name:'Compound Pharmacy Locator', tier:'growth',
+    tierLabel:'Month 2-3', potential:'$500-2K/mo', timing:'Content Month 2, widget Month 3',
+    color:'#7c3aed', newStream:true,
+    summary:'The GLP-1 shortage created an entirely new search category: "compound pharmacy near me." Separate from retail pharmacy, near-zero quality competition. Every compound pharmacy page ends with the same GLP-1 telehealth CTA — this stream compounds your existing GLP-1 revenue rather than replacing it.',
+    why:['Zero quality competition for compound pharmacy finder content','GLP-1 shortage drives sustained demand — structural supply problem, not a trend','Compound pharmacy audience = already has a prescription, cannot fill it = maximum intent','$300 CPA from Fridays Health × low volume still beats most streams'],
+    programs:[
+      {abbr:'FR',name:'Fridays Health (GLP-1)',commission:'$300 CPA',color:'#16a34a',url:'https://www.joinfridays.com/'},
+      {abbr:'MO',name:'Mochi Health',commission:'$90 CPA',color:'#7c3aed',url:'https://mochi.health/affiliate'},
+    ],
+    marketingPlan:['Build /compound-pharmacy/ locator hub using Google Places compound pharmacy category','Write "How to find semaglutide at a compound pharmacy near you"','Write "Compound pharmacy vs retail: what\'s different and when to choose compound"','Add compound pharmacy filter to main pharmacy finder widget'],
+    techStack:['Extend pharmacy finder widget with compound pharmacy category filter','Google Places API "compounding_pharmacy" type','GLP-1 telehealth CTA on every compound pharmacy page'],
+    todos:[
+      {id:'pbt_cpl1',text:'Build /compound-pharmacy/ locator page',done:false},
+      {id:'pbt_cpl2',text:'Write semaglutide compound pharmacy guide',done:false},
+      {id:'pbt_cpl3',text:'Add compound pharmacy filter to pharmacy finder widget',done:false},
+      {id:'pbt_cpl4',text:'Add GLP-1 telehealth CTA to all compound pharmacy pages',done:false},
+    ]
+  },
+  {
+    id:'pb20', priority:7, name:'GoHealth / Medicare Insurance', tier:'seasonal',
+    tierLabel:'Peak Oct-Jan', potential:'$1-3K/mo (peak season)', timing:'Apply now, activate September',
+    color:'#6366f1', newStream:true,
+    summary:'GoHealth specializes in Medicare Advantage and pays $100-200+ CPA. The senior filling multiple prescriptions is the exact Medicare buyer. Your existing insurance section covers ACA well but has a gap in Medicare-specific programs. GoHealth and SelectQuote fill it.',
+    why:['$100-200+ CPA per Medicare referral — higher than most ACA programs','Senior pharmacy audience maps directly to Medicare eligibility (65+)','Medicare open enrollment: Oct 15 - Dec 7 — runs simultaneously with ACA enrollment','GoHealth has a Medicare-specific conversion funnel that outperforms generic comparison tools'],
+    programs:[
+      {abbr:'GH',name:'GoHealth',commission:'$100-200+ CPA, Medicare Advantage',color:'#6366f1',url:'https://www.gohealth.com/medicare/'},
+      {abbr:'SQ',name:'SelectQuote',commission:'Health/Medicare leads',color:'#0d9488',url:'https://www.selectquote.com/about/partners/'},
+    ],
+    marketingPlan:['Build /medicare-pharmacy-benefits/: Part D explained, best plans for prescription coverage','Target: "Medicare plans with prescription coverage", "Part D vs discount card — which saves more?"','Add GoHealth widget to Medicare content pages during Oct-Jan window','Internal link from all senior content: medical alerts, CPAP, chronic conditions'],
+    techStack:['GoHealth publisher widget or direct affiliate links','Segment Medicare content in GA4 for seasonal performance analysis'],
+    todos:[
+      {id:'pbt_gh1',text:'Apply for GoHealth Medicare affiliate program',done:false},
+      {id:'pbt_gh2',text:'Apply for SelectQuote affiliate program',done:false},
+      {id:'pbt_gh3',text:'Build /medicare-pharmacy-benefits/ guide',done:false},
+      {id:'pbt_gh4',text:'Write "Part D vs discount card: which saves more on prescriptions?" comparison',done:false},
+    ]
+  },
+  {
+    id:'pb21', priority:8, name:'Urgent Care Bookings', tier:'growth',
+    tierLabel:'Month 2-3', potential:'$300-1K/mo', timing:'Content Month 2',
+    color:'#f97316', newStream:true,
+    summary:'When a pharmacy is closed at 2am, the fallback decision tree is: try another pharmacy → telehealth → urgent care → ER. Solv Health lets patients book urgent care online and has an affiliate program. This site can own the entire fallback stack in a single user journey.',
+    why:['Solv Health and Zocdoc both have affiliate/referral programs for urgent care bookings','Same 2am audience — highest possible intent, time-sensitive need','Complements telehealth: some conditions need in-person care telehealth cannot provide','"24 hour urgent care near me" search volume rivals pharmacy finder queries'],
+    programs:[
+      {abbr:'SV',name:'Solv Health',commission:'Per booking referral',color:'#f97316',url:'https://www.solvhealth.com/partners'},
+      {abbr:'ZD',name:'Zocdoc',commission:'Per appointment booking',color:'#0d9488',url:'https://www.zocdoc.com/about/advertise/'},
+    ],
+    marketingPlan:['Add urgent care finder as secondary CTA on city pages when no 24hr pharmacy nearby','Write "24-hour urgent care near me: when to go instead of waiting for a pharmacy"','Create decision tree: pharmacy vs telehealth vs urgent care vs ER','Target: "[city] 24 hour urgent care", "urgent care open now [city]"'],
+    techStack:['Solv Health booking widget embed or affiliate links','Add urgent care as a location type in pharmacy finder widget'],
+    todos:[
+      {id:'pbt_uc1',text:'Apply for Solv Health partner/affiliate program',done:false},
+      {id:'pbt_uc2',text:'Apply for Zocdoc affiliate program',done:false},
+      {id:'pbt_uc3',text:'Write pharmacy vs telehealth vs urgent care vs ER decision guide',done:false},
+      {id:'pbt_uc4',text:'Add urgent care CTA to city pages with no 24hr pharmacy results',done:false},
+    ]
+  },
+  {
+    id:'pb22', priority:9, name:'Spanish-Language City Pages', tier:'growth',
+    tierLabel:'Month 3-4', potential:'Traffic 2x in Hispanic metros', timing:'Translate top 20 cities, Month 3',
+    color:'#dc2626', newStream:true,
+    summary:'~40% of uninsured Americans are Hispanic. "Farmacia 24 horas cerca de mi" has real search volume with near-zero English competition. Translating your top 20 city pages with hreflang takes ~2 hours per page with Claude. No other pharmacy site is doing this.',
+    why:['40% of the uninsured population speaks Spanish as primary or preferred language','Near-zero competition — no established pharmacy site has Spanish pages','Discount card commissions work regardless of language — same BIN/PCN/Group','Google gives preferential treatment to native-language content for Spanish queries'],
+    programs:[
+      {abbr:'LM',name:'LowerMyRx (same card, same commissions)',commission:'Up to $4/fill',color:'#16a34a',url:'https://affiliate.lowermyrx.com/'},
+    ],
+    marketingPlan:['Translate top 20 city pages to Spanish with proper hreflang tags','Target: "farmacia 24 horas [ciudad]", "farmacia abierta ahora [ciudad]"','Translate discount card widget labels and CTA copy','Build /ahorro-en-medicamentos/ Spanish savings hub'],
+    techStack:['WordPress Polylang (free) or WPML ($99/yr) for multilingual','Claude for translation with medical terminology accuracy check','hreflang tags in page head for en/es language pairs'],
+    todos:[
+      {id:'pbt_es1',text:'Evaluate WPML vs Polylang for multilingual WordPress — install chosen plugin',done:false},
+      {id:'pbt_es2',text:'Translate top 5 city pages to Spanish with hreflang tags',done:false},
+      {id:'pbt_es3',text:'Translate discount card widget labels and CTA copy to Spanish',done:false},
+      {id:'pbt_es4',text:'Build /ahorro-en-medicamentos/ Spanish savings hub',done:false},
+      {id:'pbt_es5',text:'Expand to top 20 Spanish city pages after validating traffic',done:false},
+    ]
+  },
+  {
+    id:'pb23', priority:10, name:'FDA NDC Database Content Hub', tier:'growth',
+    tierLabel:'Month 3-4', potential:'Long-tail traffic machine', timing:'Content Month 3+',
+    color:'#475569', newStream:true,
+    summary:'The FDA National Drug Code (NDC) directory is public, free, and machine-readable. Every FDA-approved drug in the US. You can programmatically generate "where to fill [drug name] near you" pages for the top 1,000 drugs — each a high-intent landing page feeding discount card, PAP, and telehealth funnels. A publishable /data/ CSV also becomes an LLM citation source.',
+    why:['Free authoritative data source — FDA imprimatur gives immediate YMYL credibility','Programmatic scale: 1,000 drug pages × moderate search volume = massive long-tail traffic','Each page has a clear affiliate path: discount card + PAP + telehealth','Downloadable CSV page becomes cited by ChatGPT, Perplexity, and other LLMs as a data source'],
+    programs:[
+      {abbr:'NM',name:'NeedyMeds (PAP fallback)',commission:'Affiliate referral',color:'#0369a1',url:'https://www.needymeds.org/'},
+      {abbr:'LM',name:'LowerMyRx (primary)',commission:'Up to $4/fill',color:'#16a34a',url:'https://affiliate.lowermyrx.com/'},
+    ],
+    marketingPlan:['Build /drug/[drug-name]/ template: "Where to fill [drug] near you + how to save"','Generate pages for top 500 prescription drugs by fill volume','Publish /data/us-drug-prices.csv — downloadable data for LLM citation','Add drug search to site header as secondary navigation'],
+    techStack:['openFDA API (free, no key required for public endpoints)','Python script to pull NDC data and generate WP posts via REST API','Drug custom post type extending the pharmacy plugin'],
+    todos:[
+      {id:'pbt_fda1',text:'Explore openFDA API endpoints — map available drug data fields',done:false},
+      {id:'pbt_fda2',text:'Build Drug custom post type in WordPress plugin',done:false},
+      {id:'pbt_fda3',text:'Write Python script: pull top 500 drugs from NDC database → generate WP drafts',done:false},
+      {id:'pbt_fda4',text:'Build /drug/[slug]/ page template with discount card + PAP + telehealth CTAs',done:false},
+      {id:'pbt_fda5',text:'Publish /data/ page with downloadable CSV of pharmacy and drug data',done:false},
+    ]
+  },
+  {
+    id:'pb24', priority:12, name:'Dental Insurance', tier:'growth',
+    tierLabel:'Month 4-5', potential:'$300-1K/mo', timing:'Content Month 4',
+    color:'#0891b2', newStream:true,
+    summary:'Dental insurance and prescription savings are bought by the same audience in the same season. DentalPlans.com pays $20-40 CPA. Careington pays per plan activation. Adding dental to your insurance content cluster adds revenue with zero new audience acquisition.',
+    why:['Same uninsured audience, same enrollment season, same cost-conscious mindset','DentalPlans.com $20-40 CPA, Careington $15-30 CPA','"Dental insurance without waiting period" is a real high-intent query with weak competition','Easy internal link from ACA/Medicare content: "Dental not covered? Here\'s how to save"'],
+    programs:[
+      {abbr:'DP',name:'DentalPlans.com',commission:'$20-40 CPA',color:'#0891b2',url:'https://www.dentalplans.com/affiliate/'},
+      {abbr:'CI',name:'Careington',commission:'Per plan activation',color:'#0369a1',url:'https://www.careington.com/affiliates/'},
+    ],
+    marketingPlan:['Add dental section to /insurance/ hub page','Write "Best dental insurance for uninsured adults" guide','Target: "dental insurance no waiting period", "dental discount plan near me"','Internal link from ACA and Medicare guides: "Dental not covered? Here\'s how to save"'],
+    techStack:['Standard affiliate links via DentalPlans.com or Careington direct','Lasso for link management'],
+    todos:[
+      {id:'pbt_dn1',text:'Apply for DentalPlans.com affiliate program',done:false},
+      {id:'pbt_dn2',text:'Apply for Careington affiliate program',done:false},
+      {id:'pbt_dn3',text:'Add dental section to insurance hub page',done:false},
+      {id:'pbt_dn4',text:'Write "Best dental insurance for uninsured adults" guide',done:false},
+    ]
+  },
 ];
 
 const LINK_GROUPS = [
@@ -950,6 +1160,9 @@ const LINK_GROUPS = [
       { abbr:'LM', label:'LowerMyRx', desc:'Up to $4/fill', url:'https://affiliate.lowermyrx.com/', color:'#16a34a' },
       { abbr:'ND', label:'National Drug Card', desc:'$2-2.50/fill', url:'https://ndcaffiliate.com/', color:'#0d9488' },
       { abbr:'SC', label:'SingleCare Partners', desc:'$2.50/signup', url:'https://partners.singlecare.com/', color:'#7c3aed' },
+      { abbr:'RS', label:'RxSaver', desc:'$2+/fill via TransUnion', url:'https://www.rxsaver.com/', color:'#0891b2' },
+      { abbr:'BH', label:'Blink Health', desc:'Pre-pays at counter — different model', url:'https://www.blinkhealth.com/', color:'#2563eb' },
+      { abbr:'SW', label:'ScriptSave WellRx', desc:'Solid backup program', url:'https://www.wellrx.com/affiliates/', color:'#16a34a' },
     ]
   },
   {
@@ -967,6 +1180,8 @@ const LINK_GROUPS = [
       { abbr:'MA', label:'MediaAlpha', desc:'Health insurance leads, $50-200/lead', url:'https://mediaalpha.com/publishers/', color:'#6366f1' },
       { abbr:'EQ', label:'EverQuote', desc:'Insurance lead gen', url:'https://www.everquote.com/affiliates/', color:'#0ea5e9' },
       { abbr:'EH', label:'eHealth Partners', desc:'ACA/Medicare, $10-75/app', url:'https://ehealthinsurance.com/info/site-publisher', color:'#0369a1' },
+      { abbr:'GH', label:'GoHealth', desc:'Medicare Advantage, $100-200+ CPA', url:'https://www.gohealth.com/medicare/', color:'#6366f1' },
+      { abbr:'SQ', label:'SelectQuote', desc:'Health + Medicare leads', url:'https://www.selectquote.com/about/partners/', color:'#0d9488' },
     ]
   },
   {
@@ -976,6 +1191,9 @@ const LINK_GROUPS = [
       { abbr:'MD', label:'MDLive', desc:'Urgent care telehealth', url:'https://www.mdlive.com/affiliates/', color:'#0d9488' },
       { abbr:'AC', label:'Amazon Clinic', desc:'Amazon telehealth', url:'https://clinic.amazon.com/', color:'#ff9900' },
       { abbr:'NX', label:'Nurx (PerformCB)', desc:'$25-75/lead', url:'https://www.performcb.com/', color:'#7c3aed' },
+      { abbr:'SV', label:'Solv Health', desc:'Urgent care bookings affiliate', url:'https://www.solvhealth.com/partners', color:'#f97316' },
+      { abbr:'SE', label:'Sesame Care', desc:'Pay-per-visit marketplace, $15-30 CPA', url:'https://sesamecare.com/', color:'#0d9488' },
+      { abbr:'CB', label:'Cerebral', desc:'Mental health, $50+ CPA', url:'https://cerebral.com/', color:'#6366f1' },
     ]
   },
   {
@@ -1040,6 +1258,30 @@ const LINK_GROUPS = [
       { abbr:'CV', label:'Canva', desc:'Graphics, social images', url:'https://www.canva.com/', color:'#00c4cc' },
     ]
   },
+  {
+    title: 'Emerging affiliates',
+    links: [
+      { abbr:'NM', label:'NeedyMeds', desc:'Patient assistance programs hub', url:'https://www.needymeds.org/', color:'#0369a1' },
+      { abbr:'DP', label:'DentalPlans.com', desc:'Dental insurance, $20-40 CPA', url:'https://www.dentalplans.com/affiliate/', color:'#0891b2' },
+      { abbr:'CI', label:'Careington', desc:'Dental discount plans', url:'https://www.careington.com/affiliates/', color:'#0369a1' },
+      { abbr:'SV', label:'Solv Health', desc:'Urgent care booking affiliate', url:'https://www.solvhealth.com/partners', color:'#f97316' },
+      { abbr:'ZD', label:'Zocdoc', desc:'Appointment booking affiliate', url:'https://www.zocdoc.com/about/advertise/', color:'#16a34a' },
+      { abbr:'GH', label:'GoHealth Medicare', desc:'Medicare Advantage, $100-200+ CPA', url:'https://www.gohealth.com/medicare/', color:'#6366f1' },
+    ]
+  },
+  {
+    title: 'Data, APIs & dev tools',
+    links: [
+      { abbr:'OF', label:'openFDA API', desc:'Free drug/NDC database — no key required', url:'https://open.fda.gov/apis/', color:'#dc2626' },
+      { abbr:'DF', label:'DataForSEO', desc:'Keyword research API — $0.0025/keyword', url:'https://dataforseo.com/', color:'#2563eb' },
+      { abbr:'SP', label:'SerpApi', desc:'Rank tracking API — cheaper than Ahrefs at scale', url:'https://serpapi.com/', color:'#16a34a' },
+      { abbr:'RP', label:'Replicate', desc:'AI images for city pages — $0.003/image', url:'https://replicate.com/', color:'#1f2937' },
+      { abbr:'N8', label:'n8n', desc:'Self-hosted Make.com alternative — free', url:'https://n8n.io/', color:'#f97316' },
+      { abbr:'PL', label:'Plausible Analytics', desc:'GDPR-compliant GA4 alternative, no consent banner needed', url:'https://plausible.io/', color:'#6366f1' },
+      { abbr:'FC', label:'Firecrawl', desc:'Scrape pharmacy hours changes automatically', url:'https://www.firecrawl.dev/', color:'#0891b2' },
+      { abbr:'WL', label:'Wordlift', desc:'AI-powered JSON-LD schema for WordPress', url:'https://wordlift.io/', color:'#7c3aed' },
+    ]
+  },
 ];
 
 const MONTHS_COLS = [
@@ -1060,6 +1302,9 @@ const METRIC_ROWS = [
   { id:'discount_cards', label:'Discount Card Commissions ($)', hint:'LowerMyRx, NDC, SingleCare. Per-fill commissions accumulate over time as affiliate codes stay in pharmacy systems.' },
   { id:'insurance', label:'Insurance Lead Revenue ($)', hint:'MediaAlpha, EverQuote, eHealthInsurance. Spikes 10-20x Oct-Jan. Highest revenue-per-visitor window.' },
   { id:'telehealth', label:'Telehealth Revenue ($)', hint:'Nurx, Hims, Ro, Teladoc. $25-100 per qualified referral. Off-hours pharmacy traffic converts well.' },
+  { id:'glp1_rev', label:'GLP-1 Telehealth Revenue ($)', isNew:true, hint:'NEW: Mochi Health ($90 CPA), Fridays Health ($300 CPA), OrderlyMeds ($75 CPA). Track separately — highest CPA stream. Shortage tracker and compound pharmacy pages are primary drivers.' },
+  { id:'card_downloads', label:'Branded Card Downloads (#)', isNew:true, hint:'NEW: Track downloads of the white-label 24HourPharmacy Savings Card. Leading indicator — each download is a potential lifetime recurring commission that compounds over years.' },
+  { id:'pap_clicks', label:'PAP / Manufacturer Coupon Clicks (#)', isNew:true, hint:'NEW: Track clicks to NeedyMeds, RxAssist, and manufacturer PAP pages. High-intent users who convert back to your discount card when PAP income limits are not met.' },
   { id:'retail_pharma', label:'Retail Pharmacy Affiliates ($)', hint:'Walgreens (2%), Rite Aid (5.6%), CVS via CJ Affiliate.' },
   { id:'otc_amazon', label:'OTC / Amazon Associates ($)', hint:'Health products, pill organizers, thermometers, supplements. Broad and consistent.' },
   { id:'total_revenue', label:'Total Revenue ($)', hint:'Sum of all revenue streams. The headline number.' },
@@ -1172,6 +1417,9 @@ const RECURRING_TASKS = [
   { type:'tax', text:'Update Wave Accounting with income and expenses' },
   { type:'seo', text:'Run PageSpeed Insights on 3 key pages and note any regressions' },
   { type:'geo', text:'Test brand in ChatGPT and Perplexity for top pharmacy queries. Note what gets cited. Update content strategy accordingly.', isNew:true },
+  { type:'seo', text:'Update GLP-1 shortage tracker with current semaglutide/tirzepatide availability by chain (20 min)', isNew:true },
+  { type:'seo', text:'Check n8n pipeline health — verify pharmacy data sync ran without errors', isNew:true },
+  { type:'revenue', text:'Check DataForSEO rank tracking — note movement on city page and drug page target keywords', isNew:true },
 ];
 
 // =====================================================================
