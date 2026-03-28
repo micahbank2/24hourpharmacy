@@ -467,6 +467,9 @@ const PHASES = [
       { id: 'f22', text: 'Enable IndexNow in RankMath settings', hint: 'IndexNow protocol instantly pushes new page URLs to Bing and Yandex the moment you publish. New city pages get indexed in hours instead of weeks. Enable in RankMath > General Settings > IndexNow. Free and takes 30 seconds.' },
       { id: 'f23', text: 'ADA/WCAG 2.1 compliance audit before launch — fix contrast ratios, keyboard navigation, alt text', hint: 'Health sites have elevated ADA lawsuit risk. Demand letters for WCAG non-compliance are a cottage industry. Use WAVE (wave.webaim.org) for a free audit. Minimum: all images have alt text, color contrast passes AA standard (4.5:1), keyboard navigation works on all interactive elements, all form inputs have labels. Building accessible from the start is far cheaper than retrofitting.' },
       { id: 'f24', text: 'Implement separate cookie consent flows: necessary vs analytics vs advertising', hint: 'A generic "we use cookies" banner does not satisfy CCPA. California visitors must be able to opt out of advertising cookies (AdSense) separately from analytics (GA4). CookieYes supports this with a proper "Do Not Sell My Data" flow. Most free WP cookie plugins get this wrong and expose you to CCPA liability.' },
+      { id: 'f25', text: 'Legal: never segment email list by medication name or medical condition', hint: 'HIPAA does not apply to this site directly (no PHI handled), but if you collect emails and later segment by condition or medication type, a data breach could put you in a legal gray zone. Keep email segmentation to behavior only: discount card users, insurance seekers, general health. Never tag subscribers by drug name, diagnosis, or medical condition.' },
+      { id: 'f26', text: 'Legal: use pharmacy brand names descriptively in content, not in URLs or domain paths', hint: 'Using "Walgreens" or "CVS" in URLs (e.g. /walgreens-24-hour/) is riskier than using them in page titles and body copy. Descriptive use in content is generally fine under nominative fair use. Trademark-specific URLs invite cease-and-desist letters. Keep URLs generic: /24-hour-pharmacy-chicago/ not /24-hour-walgreens-chicago/.' },
+      { id: 'f27', text: 'Budget for Hostinger VPS upgrade before hitting 25K sessions/month', hint: 'Shared hosting ToS often prohibits sustained high-traffic commercial affiliate sites. At 25K+ sessions/month, resource usage from pharmacy finder API calls, React widget loads, and page generation could trigger throttling or ToS enforcement. Hostinger Cloud Startup ($9-12/mo) or a basic VPS is the upgrade path. Plan for it before you need it, not after.' },
     ]
   },
   {
@@ -510,6 +513,9 @@ const PHASES = [
       { id: 'b30', text: 'Publish /data/ page with downloadable CSV of US 24-hour pharmacy locations', isNew: true, hint: 'LLMs are trained on structured, machine-readable data and frequently cite CSV/dataset pages as authoritative sources. Blog posts do not get cited — data does. Even a rough dataset page becomes a citation magnet for ChatGPT, Perplexity, and Claude answers about pharmacy locations. Immediate E-E-A-T signal.' },
       { id: 'b31', text: 'Set up n8n self-hosted automation for pharmacy data refresh pipeline', isNew: true, hint: 'n8n is a free, self-hosted Make.com alternative that runs on a $6/mo VPS. Build the workflow: Firecrawl monitors pharmacy chain sites for hours changes → diffs against cached data → pushes updates to WordPress via REST API. This automates the data freshness problem before it becomes a 500-city manual nightmare. Install at n8n.io.' },
       { id: 'b32', text: 'Use DataForSEO to pull search volumes for all city + drug query variations ($15 total)', isNew: true, hint: 'DataForSEO costs $0.0025/keyword. Pull search volumes for every "[city] 24 hour pharmacy" variation (50+ cities) plus every target drug name. Total cost under $15. Use results to prioritize which city pages and FDA NDC drug pages to build first. Far cheaper than Ahrefs for this one-time research task.' },
+      { id: 'b33', text: 'Build and publish free "Open Now" JSON API endpoint: /api/open-now?pharmacy=cvs&city=chicago', isNew: true, hint: 'Publish a free, publicly accessible endpoint that returns whether a given pharmacy chain is currently open in a given city. Other local sites, developers, and LLM training crawlers will embed and cite it. LLMs are trained to cite structured data sources and APIs. Backlinks from developer communities are among the highest-authority links available. Zero monetization needed — the citations are the ROI.' },
+      { id: 'b34', text: 'Set up Make.com automation to monitor Reddit for pharmacy/prescription keywords and alert you', isNew: true, hint: 'Build a Make.com scenario: monitor r/personalfinance, r/povertyfinance, r/Frugal, r/ChronicIllness, r/Assistance for posts mentioning "prescription savings", "pharmacy", "GoodRx", "discount card". Send Slack or email alert when triggered. These threads rank on Google, get cited by LLMs, and represent your highest-intent audience. Reply with genuinely helpful answers — no spam.' },
+      { id: 'b35', text: 'Create Google Business Profile for 24HourPharmacy.com as a Health Information Service', isNew: true, hint: 'Most content sites never attempt this. Create a GBP listing under category "Health Information Service" or "Medical Information Service." A verified GBP can surface your site in local pack results for "[city] 24 hour pharmacy" even without traditional SEO ranking. Requires a real business address (use your LLC address). Free, takes 20 minutes, and no other pharmacy information site is doing this.' },
     ]
   },
   {
@@ -645,6 +651,11 @@ const MILESTONES = [
   { id: 'ms31', text: 'GoodRx arbitrage content cluster published (3+ articles)' },
   { id: 'ms32', text: 'GoHealth Medicare integration live before October' },
   { id: 'ms33', text: 'Compound pharmacy locator page live' },
+  { id: 'ms34', text: 'Fertility medications hub live (Carrot Fertility + Progyny applied)' },
+  { id: 'ms35', text: 'Hearing aids comparison page live' },
+  { id: 'ms36', text: 'Amazon Pharmacy transfer CTA live in pharmacy finder zero-results state' },
+  { id: 'ms37', text: 'Open Now API endpoint published and first external citation received' },
+  { id: 'ms38', text: 'Google Business Profile verified for 24HourPharmacy.com' },
 ];
 
 const PLAYBOOKS = [
@@ -1131,6 +1142,82 @@ const PLAYBOOKS = [
       {id:'pbt_dn4',text:'Write "Best dental insurance for uninsured adults" guide',done:false},
     ]
   },
+  {
+    id:'pb25', priority:7, name:'Fertility Medications', tier:'growth',
+    tierLabel:'Month 3-4', potential:'$500-2K/mo', timing:'Apply Month 2, content Month 3',
+    color:'#e11d48', newStream:true,
+    summary:'Letrozole, Clomid, progesterone, and injectable fertility drugs are all filled at regular pharmacies. The person who just got a fertility prescription and can\'t afford it is the exact audience for Carrot Fertility and Progyny — both pay $100+ CPA. Near-zero competition for "fertility medication pharmacy" queries.',
+    why:['$100-300 CPA from Carrot Fertility, Progyny, Kindbody — among the highest CPAs in any niche','People filling fertility prescriptions are already at pharmacies — same audience, zero acquisition cost','Fertility medication queries have high intent and minimal pharmacy-site competition','Progyny accepted by many employer insurance plans — conversion friction is low'],
+    programs:[
+      {abbr:'CF',name:'Carrot Fertility',commission:'$100+ CPA',color:'#e11d48',url:'https://www.get-carrot.com/'},
+      {abbr:'PG',name:'Progyny',commission:'$100+ CPA, employer insurance accepted',color:'#7c3aed',url:'https://progyny.com/'},
+      {abbr:'KB',name:'Kindbody',commission:'CPA — contact direct',color:'#0d9488',url:'https://kindbody.com/'},
+    ],
+    marketingPlan:['Write "How much does Clomid/Letrozole cost without insurance and how to save"','Build /fertility-medications/ hub: cost guides, discount card applicability, telehealth options','Target: "fertility medication cost without insurance", "letrozole pharmacy discount"','Internal link from women\'s health, OB/GYN telehealth, and uninsured content'],
+    techStack:['Standard affiliate links via direct programs','Lasso for link management'],
+    todos:[
+      {id:'pbt_fe1',text:'Apply for Carrot Fertility affiliate program',done:false},
+      {id:'pbt_fe2',text:'Apply for Progyny affiliate program',done:false},
+      {id:'pbt_fe3',text:'Write "Clomid and Letrozole cost without insurance — how to save" guide',done:false},
+      {id:'pbt_fe4',text:'Build /fertility-medications/ hub page',done:false},
+    ]
+  },
+  {
+    id:'pb26', priority:8, name:'Hearing Aids', tier:'niche',
+    tierLabel:'Month 4-5', potential:'$300-1.5K/mo', timing:'Content Month 4',
+    color:'#0891b2', newStream:true,
+    summary:'The OTC hearing aid market opened in 2022 — Jabra Enhance, MDHearing Aid, and Eargo now sell direct to consumer without a prescription. Your senior pharmacy audience (filling multiple prescriptions, on Medicare) is statistically the exact hearing aid buyer. $50-150+ per sale with no competition on pharmacy-adjacent sites.',
+    why:['$50-150/sale with long cookies — senior buyers are deliberate, multi-session converters','OTC hearing aids went legal in 2022 — the affiliate ecosystem is still underdeveloped','Senior pharmacy visitor = highest probability hearing aid buyer on the internet','Zero other pharmacy sites have made this connection'],
+    programs:[
+      {abbr:'JE',name:'Jabra Enhance',commission:'$50-150/sale',color:'#0891b2',url:'https://www.jabraenhance.com/'},
+      {abbr:'MH',name:'MDHearing Aid',commission:'CPA, Commission Junction',color:'#2563eb',url:'https://www.mdhearingaid.com/'},
+      {abbr:'EA',name:'Eargo',commission:'$75-150/sale',color:'#6366f1',url:'https://www.eargo.com/'},
+    ],
+    marketingPlan:['Write "Best OTC hearing aids 2026 — no prescription needed"','Build /seniors/hearing-aids/ comparison page','Internal link from Medicare, medical alert, and senior pharmacy content','Target: "hearing aid without insurance", "cheapest hearing aids for seniors"','Add hearing aid CTA to any content mentioning Medicare or senior pharmacy use'],
+    techStack:['Standard affiliate links via CJ or direct programs','Lasso for link management'],
+    todos:[
+      {id:'pbt_ha1',text:'Apply for Jabra Enhance affiliate program',done:false},
+      {id:'pbt_ha2',text:'Apply for MDHearing Aid via Commission Junction',done:false},
+      {id:'pbt_ha3',text:'Apply for Eargo affiliate program',done:false},
+      {id:'pbt_ha4',text:'Write "Best OTC hearing aids 2026" comparison guide',done:false},
+      {id:'pbt_ha5',text:'Add hearing aid CTA to Medicare and senior content',done:false},
+    ]
+  },
+  {
+    id:'pb27', priority:6, name:'Cost Plus Drugs Content Angle', tier:'growth',
+    tierLabel:'Month 2', potential:'Traffic → existing card conversions', timing:'2 articles, Month 2',
+    color:'#f97316', newStream:false,
+    summary:'Mark Cuban\'s Cost Plus Drugs (costplusdrugs.com) is a phenomenon — no affiliate program, but "Is [drug] cheaper at Cost Plus Drugs?" is a real high-volume query. The traffic play: write the comparison, show where Cost Plus wins, but also show where your discount card wins or covers drugs Cost Plus doesn\'t stock yet. Converts directly to your card.',
+    why:['Cost Plus Drugs has massive brand recognition and PR coverage — their queries have traffic','No affiliate program = no competition from other affiliate sites targeting these queries','"Cost Plus vs GoodRx vs discount card" is exactly the comparison your audience wants','Positions you as the objective, authoritative comparison source — strong E-E-A-T signal'],
+    programs:[
+      {abbr:'LM',name:'LowerMyRx (wins when Cost Plus doesn\'t stock the drug)',commission:'Up to $4/fill',color:'#16a34a',url:'https://affiliate.lowermyrx.com/'},
+    ],
+    marketingPlan:['Write "Cost Plus Drugs vs GoodRx vs discount card: honest comparison for 2026"','Write "Drugs Cost Plus doesn\'t carry yet — what to use instead"','Target: "cost plus drugs vs goodrx", "mark cuban pharmacy discount", "costplusdrugs.com review"'],
+    techStack:['Pure content play — no special tech','Comparison table component in WordPress'],
+    todos:[
+      {id:'pbt_cp2_1',text:'Write "Cost Plus Drugs vs GoodRx vs discount card" honest comparison',done:false},
+      {id:'pbt_cp2_2',text:'Write "Drugs Cost Plus doesn\'t stock yet — best alternatives" guide',done:false},
+      {id:'pbt_cp2_3',text:'Target "cost plus drugs" query variations in Search Console',done:false},
+    ]
+  },
+  {
+    id:'pb28', priority:5, name:'Amazon Pharmacy Transfer Widget', tier:'growth',
+    tierLabel:'Month 3', potential:'CPA per transfer + recurring fills', timing:'Build after pharmacy finder widget',
+    color:'#ff9900', newStream:true,
+    summary:'Amazon Pharmacy pays CPA for prescription transfers. When your finder widget returns no nearby 24-hour pharmacy, the fallback CTA is "Transfer your prescription to Amazon Pharmacy — delivered tomorrow." Amazon\'s conversion funnel is frictionless and they handle fulfillment. This is the killer closing move for visitors who strike out on local options.',
+    why:['Amazon Pharmacy CPA for transfers — earns per transfer plus recurring refills','Natural fallback when no local 24hr pharmacy found — zero competing interest','Amazon\'s brand trust removes conversion friction — users already have Prime accounts','Positions the site as a complete solution, not just a finder that fails when options are sparse'],
+    programs:[
+      {abbr:'AP',name:'Amazon Pharmacy',commission:'CPA per transfer, Amazon Associates',color:'#ff9900',url:'https://pharmacy.amazon.com/'},
+    ],
+    marketingPlan:['"No 24-hour pharmacy near you? Transfer to Amazon Pharmacy — free delivery with Prime"','Add as fallback CTA in pharmacy finder widget when results are empty or >10 miles away','Write "How to transfer your prescription to Amazon Pharmacy in 3 steps"','Add Amazon Pharmacy to city pages as delivery alternative'],
+    techStack:['Amazon Associates account (already applied for in b15)','CTA component in pharmacy finder widget for zero-results state','Conditional render: show Amazon Pharmacy CTA when Places API returns 0 results'],
+    todos:[
+      {id:'pbt_ap1',text:'Research Amazon Pharmacy affiliate/transfer CPA program specifics',done:false},
+      {id:'pbt_ap2',text:'Add Amazon Pharmacy fallback CTA to pharmacy finder zero-results state',done:false},
+      {id:'pbt_ap3',text:'Write "How to transfer your prescription to Amazon Pharmacy" guide',done:false},
+      {id:'pbt_ap4',text:'Add Amazon Pharmacy delivery option to all city pages',done:false},
+    ]
+  },
 ];
 
 const LINK_GROUPS = [
@@ -1246,6 +1333,7 @@ const LINK_GROUPS = [
       { abbr:'ID', label:'Ideogram', desc:'AI image generation', url:'https://ideogram.ai/', color:'#1f2937' },
       { abbr:'HX', label:'Hoox', desc:'Fix in-app browser conversion loss', url:'https://tryhoox.com/', color:'#0891b2' },
       { abbr:'EA', label:'Exa.ai', desc:'API-powered pharmacy finder search + location database builder', url:'https://exa.ai', color:'#6366f1' },
+      { abbr:'PP', label:'Perplexity API', desc:'Cheap city page research at scale — faster than GPT for background content', url:'https://www.perplexity.ai/api', color:'#0891b2' },
     ]
   },
   {
