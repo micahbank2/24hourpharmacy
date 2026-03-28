@@ -12,7 +12,7 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 
 ## Tech Stack
 
-- **CMS**: WordPress 6.x on Cloudways (DigitalOcean)
+- **CMS**: WordPress 6.x on Hostinger
 - **Theme**: GeneratePress Pro with custom child theme
 - **Custom tools**: React 18, compiled via Vite to standalone JS bundles
 - **Data scripts**: Python 3.11
@@ -21,7 +21,7 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 ## Coding Standards
 
 - **PHP**: WordPress Coding Standards (WPCS). Use native WP functions, no framework dependencies.
-- **React/JS**: ES6+, functional components, hooks. No class components. Tailwind for styling within widgets.
+- **React/JS**: ES6+, functional components, hooks. No class components. CSS custom properties from GeneratePress theme for styling within widgets. Do NOT use Tailwind.
 - **Python**: Data scripts only, not production code. Type hints. Handle rate limiting.
 - **CSS**: Minimal. Use GeneratePress built-in grid. Mobile-first (70%+ traffic is mobile).
 - **HTML**: Every page needs valid JSON-LD structured data. Every page needs proper heading hierarchy.
@@ -129,3 +129,7 @@ Currently manual:
 3. Data scripts run from local machine, push content via REST API
 
 See `docs/deployment.md` for full steps.
+
+## Planned Integrations
+
+- **Exa.ai / Websets integration (planned):** Use the Exa API to power the pharmacy finder search on-site, replacing or supplementing static data. Websets can also be used to build and verify the initial database of 24-hour pharmacy locations nationwide. This positions the site as a functional tool (not just content), which reduces YMYL exposure and creates a defensible product moat. Evaluate exa.ai free tier before committing to $49/mo Core plan.
