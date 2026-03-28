@@ -21,3 +21,22 @@ require_once PHARMACY_TOOLS_PATH . 'includes/class-post-types.php';
 require_once PHARMACY_TOOLS_PATH . 'includes/class-schema.php';
 require_once PHARMACY_TOOLS_PATH . 'includes/class-shortcodes.php';
 require_once PHARMACY_TOOLS_PATH . 'includes/class-settings.php';
+
+// Instantiate and register all plugin components.
+$pharmacy_post_types = new Pharmacy_Tools_Post_Types();
+$pharmacy_post_types->register();
+
+$pharmacy_settings = new Pharmacy_Tools_Settings();
+$pharmacy_settings->register();
+
+$pharmacy_schema = new Pharmacy_Tools_Schema();
+$pharmacy_schema->register();
+
+$pharmacy_shortcodes = new Pharmacy_Tools_Shortcodes();
+$pharmacy_shortcodes->register();
+
+// Activation: flush rewrite rules so CPT URLs resolve immediately.
+register_activation_hook( __FILE__, array( 'Pharmacy_Tools_Post_Types', 'activation' ) );
+
+// Deactivation: flush rewrite rules to remove CPT slugs from WP cache.
+register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
