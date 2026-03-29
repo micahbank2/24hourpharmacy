@@ -4,7 +4,7 @@
 
 Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress core and third-party plugins are NOT in this repo; they live on the production server. This repo contains only the code we write:
 
-- `wordpress/theme/` - GeneratePress child theme (PHP templates, functions, styles)
+- `wordpress/theme/` - Kadence child theme (PHP templates, functions, styles)
 - `wordpress/plugin/` - Custom plugin: post types, taxonomies, shortcodes, schema markup
 - `widgets/` - React source code for interactive tools (compiled to JS bundles)
 - `data/` - City/pharmacy data and Python scripts for programmatic page generation
@@ -13,7 +13,7 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 ## Tech Stack
 
 - **CMS**: WordPress 6.x on Hostinger
-- **Theme**: GeneratePress Pro with custom child theme
+- **Theme**: Kadence (free tier) with custom child theme — replaces GeneratePress
 - **Custom tools**: React 18, compiled via Vite to standalone JS bundles
 - **Data scripts**: Python 3.11
 - **Maps**: Google Maps Platform (Places API + Maps JavaScript API)
@@ -21,9 +21,9 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 ## Coding Standards
 
 - **PHP**: WordPress Coding Standards (WPCS). Use native WP functions, no framework dependencies.
-- **React/JS**: ES6+, functional components, hooks. No class components. CSS custom properties from GeneratePress theme for styling within widgets. Do NOT use Tailwind.
+- **React/JS**: ES6+, functional components, hooks. No class components. CSS custom properties from Kadence theme for styling within widgets. Do NOT use Tailwind.
 - **Python**: Data scripts only, not production code. Type hints. Handle rate limiting.
-- **CSS**: Minimal. Use GeneratePress built-in grid. Mobile-first (70%+ traffic is mobile).
+- **CSS**: Minimal. Use Kadence built-in grid. Mobile-first (70%+ traffic is mobile).
 - **HTML**: Every page needs valid JSON-LD structured data. Every page needs proper heading hierarchy.
 
 ## Key Rules
@@ -51,7 +51,7 @@ See `.env.example` for the full list. Key ones:
 ├── .env.example                       # Env var template (no real values)
 ├── .gitignore
 ├── wordpress/
-│   ├── theme/                         # GeneratePress child theme
+│   ├── theme/                         # Kadence child theme
 │   │   ├── style.css                  # Child theme declaration
 │   │   ├── functions.php              # Post types, taxonomies, enqueues
 │   │   ├── single-city.php            # City pharmacy finder template
