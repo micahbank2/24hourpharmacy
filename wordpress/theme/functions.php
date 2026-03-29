@@ -151,6 +151,10 @@ function twentyfourhour_append_disclaimer( $content ) {
 	if ( ! is_singular( array( 'city', 'pharmacy' ) ) && ! is_page() ) {
 		return $content;
 	}
+	// Bail if template already rendered an explicit disclaimer shortcode.
+	if ( has_shortcode( $content, 'medical_disclaimer' ) ) {
+		return $content;
+	}
 
 	$disclaimer  = '<div class="medical-disclaimer" role="note" aria-label="' . esc_attr__( 'Medical Disclaimer', '24hourpharmacy' ) . '">';
 	$disclaimer .= '<p><strong>' . esc_html__( 'Medical Disclaimer:', '24hourpharmacy' ) . '</strong> ';
