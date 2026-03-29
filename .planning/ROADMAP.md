@@ -41,6 +41,13 @@ Plans:
 
 **Requirements covered:** INFRA-07, INFRA-08, INFRA-09, CONTENT-01
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — City page template + functions.php fix + CSS additions
+- [ ] 02-02-PLAN.md — Compliance page content (5 files)
+- [ ] 02-03-PLAN.md — Secondary templates (homepage, pharmacy detail, state archive)
+
 **Deliverables:**
 - `single-city.php` with correct H1/H2 heading hierarchy, all ad zones, disclaimer shortcode, disclosure shortcode, affiliate CTA blocks
 - `front-page.php` with above-the-fold hero + quick search entry point
@@ -53,7 +60,7 @@ Plans:
 **Success criteria:**
 - Visiting any city post renders: H1, at least 3 H2s, disclaimer block, disclosure block, 2+ affiliate CTA regions
 - All 5 compliance pages return 200 with real content (not placeholder)
-- Page source includes `.ad-zone-header`, `.ad-zone-sidebar`, `.ad-zone-in-content`, `.ad-zone-footer` class containers
+- Page source includes `.ad-zone-header`, `.ad-zone-in-content`, `.ad-zone-footer` class containers
 
 ---
 
@@ -210,4 +217,4 @@ Plans:
 ---
 
 *Roadmap created: 2026-03-28*
-*Last updated: 2026-03-28 after project initialization*
+*Last updated: 2026-03-29 after Phase 2 planning*
