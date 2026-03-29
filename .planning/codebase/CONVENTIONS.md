@@ -108,7 +108,7 @@ export default function App({ style = 'full' }) {
 
 **No Tailwind.** All widget CSS uses:
 - Widget-scoped BEM selectors with widget prefix (`.dc-`, `.pf-`, etc.)
-- CSS custom properties with GeneratePress theme fallbacks:
+- CSS custom properties with Kadence theme fallbacks:
   ```css
   color: var(--color-text, #1A1A1A);
   padding: var(--spacing-lg, 1.5rem);
@@ -119,7 +119,7 @@ export default function App({ style = 'full' }) {
 
 **Theme CSS:**
 - Child theme styles: `wordpress/theme/assets/css/custom.css`
-- Uses GeneratePress built-in grid — do not replicate grid logic in custom CSS
+- Uses Kadence built-in grid — do not replicate grid logic in custom CSS
 - Custom styles should be minimal augmentations only
 
 **Ad zones (required):**

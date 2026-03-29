@@ -18,15 +18,15 @@
 **WordPress CMS (Server):**
 - Purpose: Routing, content storage, template rendering, plugin execution
 - Location: Not in repo — lives on Hostinger production server
-- Contains: WordPress core, GeneratePress Pro parent theme, all database content
-- Depends on: MySQL, PHP 8.x, GeneratePress Pro (must be installed on server)
+- Contains: WordPress core, Kadence parent theme, all database content
+- Depends on: MySQL, PHP 8.x, Kadence (must be installed on server)
 - Used by: All web requests
 
 **Child Theme (`wordpress/theme/`):**
-- Purpose: Page templates and custom CSS — overrides GeneratePress Pro defaults
+- Purpose: Page templates and custom CSS — overrides Kadence defaults
 - Location: `wordpress/theme/`
 - Contains: PHP templates, `functions.php`, `assets/css/custom.css`
-- Depends on: GeneratePress Pro parent theme being installed
+- Depends on: Kadence parent theme being installed
 - Used by: WordPress template hierarchy for every rendered page
 
 **Custom Plugin (`wordpress/plugin/24hr-pharmacy-tools/`):**
@@ -65,7 +65,7 @@
 
 1. Browser requests URL (e.g., `/pharmacy-finder/new-york/`)
 2. WordPress routes to child theme template (`single-city.php`, `archive-state.php`, etc.)
-3. Template calls `get_header()` / `get_footer()` which load GeneratePress Pro structure
+3. Template calls `get_header()` / `get_footer()` which load Kadence structure
 4. Plugin shortcodes in page content trigger `wp_enqueue_script()` for appropriate widget bundle
 5. Plugin calls `wp_localize_script()` to pass Google Maps API key and affiliate codes to JS
 6. Browser loads and executes compiled React bundle; widget mounts into `<div>` placeholder
@@ -87,7 +87,7 @@
 **WordPress Template Hierarchy:**
 - Purpose: Map URL patterns to PHP templates
 - Examples: `wordpress/theme/single-city.php` (individual city pages), `wordpress/theme/archive-state.php` (state listings), `wordpress/theme/front-page.php` (homepage), `wordpress/theme/single-pharmacy.php` (individual pharmacy)
-- Pattern: WordPress resolves template file based on post type and URL; child theme files override GeneratePress Pro defaults
+- Pattern: WordPress resolves template file based on post type and URL; child theme files override Kadence defaults
 
 **Custom Plugin Classes:**
 - `class-post-types.php` — registers custom post types (e.g., `city`, `pharmacy`)

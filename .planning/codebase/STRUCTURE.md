@@ -5,7 +5,7 @@
 ## What's In This Repo vs. What Lives on the Server
 
 **In this repo (custom code only):**
-- GeneratePress child theme (`wordpress/theme/`)
+- Kadence child theme (`wordpress/theme/`)
 - Custom WordPress plugin (`wordpress/plugin/24hr-pharmacy-tools/`)
 - React widget source code (`widgets/`)
 - City/pharmacy data and generation scripts (`data/`)
@@ -13,7 +13,7 @@
 
 **On the production server only (NOT in this repo):**
 - WordPress 6.x core
-- GeneratePress Pro parent theme (required dependency)
+- Kadence (free tier) parent theme (required dependency)
 - All other third-party plugins
 - MySQL database (all post content, options, user data)
 - Compiled widget bundles after deployment (`wordpress/plugin/assets/js/*.js`)
@@ -27,7 +27,7 @@
 ├── .gitignore
 ├── README.md
 ├── wordpress/
-│   ├── theme/                             # GeneratePress child theme
+│   ├── theme/                             # Kadence child theme
 │   │   ├── style.css                      # Child theme declaration (required by WP)
 │   │   ├── functions.php                  # Enqueues parent + child styles
 │   │   ├── front-page.php                 # Homepage template (stub)
@@ -82,7 +82,7 @@
 ## Directory Purposes
 
 **`wordpress/theme/`:**
-- Purpose: GeneratePress child theme — controls page layout and presentation
+- Purpose: Kadence child theme — controls page layout and presentation
 - Contains: PHP template files, one CSS file, placeholder for theme JS
 - Key files: `functions.php` (style enqueues), `single-city.php` (main content template), `custom.css` (site styles)
 - Note: All templates are stubs — `<!-- to be implemented -->` is the current body content
@@ -158,7 +158,7 @@
 
 **New CSS styles:**
 - Site-wide: `wordpress/theme/assets/css/custom.css`
-- Widget-scoped: `widgets/{widget-name}/src/styles.css` (use GeneratePress CSS custom properties, no Tailwind)
+- Widget-scoped: `widgets/{widget-name}/src/styles.css` (use Kadence CSS custom properties, no Tailwind)
 
 **New data script:**
 - Add Python file to `data/scripts/`

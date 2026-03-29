@@ -27,7 +27,7 @@
 
 **Core:**
 - WordPress 6.x — CMS, routing, content management
-- GeneratePress Pro — parent theme; child theme at `wordpress/theme/`
+- Kadence (free tier) — parent theme; child theme at `wordpress/theme/`
 
 **Frontend (Widgets):**
 - React 18 — functional components with hooks; no class components
@@ -41,7 +41,7 @@
 ## Key Dependencies
 
 **PHP/WordPress:**
-- GeneratePress Pro (parent theme) — loaded on server, not in repo
+- Kadence (free tier) (parent theme) — loaded on server, not in repo
 - WordPress core — loaded on server, not in repo
 - Custom plugin `24hr-pharmacy-tools` at `wordpress/plugin/24hr-pharmacy-tools/24hr-pharmacy-tools.php`
 
@@ -85,7 +85,7 @@
 ## Notable Observations
 
 - No root-level package.json — each widget is an isolated Vite project
-- No Tailwind; styling uses GeneratePress CSS custom properties and minimal custom CSS
+- No Tailwind; styling uses Kadence CSS custom properties and minimal custom CSS
 - React widgets must load async (Core Web Vitals requirement: LCP < 2.5s)
 - Four widget slots defined but scaffolding completeness varies: `pharmacy-finder`, `discount-card`, `price-checker`, `open-now-checker`
 - Manual deployment is the only current path to production — no automated deploy on push

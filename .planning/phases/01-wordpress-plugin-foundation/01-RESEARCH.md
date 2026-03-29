@@ -47,7 +47,7 @@ These directives override all research recommendations. The planner must verify 
 - **`noscript` fallback:** Required inside every shortcode output div.
 - **Text domain:** `24hr-pharmacy-tools` for all i18n.
 - **Config global:** `window.PharmacyToolsConfig` — widgets read via `window.PharmacyToolsConfig?.affiliate`.
-- **No Tailwind in PHP/CSS.** GeneratePress built-in grid only.
+- **No Tailwind in PHP/CSS.** Kadence built-in grid only.
 - **Medical disclaimer required** on every page. YMYL content.
 - **FTC affiliate disclosure required** on every page with affiliate links.
 - **Ad zone classes must be built in:** `.ad-zone-header`, `.ad-zone-sidebar`, `.ad-zone-in-content`, `.ad-zone-footer`.

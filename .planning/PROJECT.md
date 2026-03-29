@@ -12,7 +12,7 @@ A working pharmacy finder tool with a branded discount card that earns recurring
 
 ### Validated
 
-- ✓ WordPress + GeneratePress child theme architecture — existing scaffold
+- ✓ WordPress + Kadence child theme architecture — existing scaffold
 - ✓ Custom 9-file plugin architecture designed (class-post-types, schema, shortcodes, settings, etc.)
 - ✓ 4 React widget projects scaffolded (pharmacy-finder, discount-card, price-checker, open-now-checker)
 - ✓ Python data pipeline designed (cities.json with 50 US metros, generate-city-pages.py)
@@ -46,9 +46,9 @@ A working pharmacy finder tool with a branded discount card that earns recurring
 
 ## Context
 
-- **Stack**: WordPress 6.x on Hostinger, GeneratePress child theme, React 18 widgets via Vite, Python 3.11 data scripts
+- **Stack**: WordPress 6.x on Hostinger, Kadence child theme, React 18 widgets via Vite, Python 3.11 data scripts
 - **Deployment**: Manual — zip theme/plugin → upload via WP admin. No CI/CD. No staging environment.
-- **Infrastructure**: Domain at ExonHost (transfer in progress as of 2026-03-28), hosting at Hostinger, CDN via Cloudflare
+- **Infrastructure**: Domain at GoDaddy (transferred from ExonHost 2026-03-29, processing), hosting at Hostinger, CDN via Cloudflare
 - **Codebase state**: Scaffold only — all plugin class files are stubs, all widget directories are empty, all PHP templates are stubs. Nothing renders yet.
 - **Revenue model**: Affiliate commissions (discount cards, telehealth, insurance leads, GLP-1, medical alerts, OTC, etc.) + display advertising (AdSense → Raptive). Full playbook in docs/docs/command-center/index.html.
 - **Legal context**: YMYL site. Medical disclaimer required on every page. FTC affiliate disclosure required on every page with affiliate links. Cookie consent must support CCPA separate opt-out flows.
@@ -57,7 +57,7 @@ A working pharmacy finder tool with a branded discount card that earns recurring
 
 ## Constraints
 
-- **Tech**: PHP must follow WordPress Coding Standards. No framework dependencies in PHP. React widgets must load async (defer/async in wp_enqueue_script). Do NOT use Tailwind in widgets — use GeneratePress CSS custom properties.
+- **Tech**: PHP must follow WordPress Coding Standards. No framework dependencies in PHP. React widgets must load async (defer/async in wp_enqueue_script). Do NOT use Tailwind in widgets — use Kadence CSS custom properties.
 - **Deployment**: All changes deploy via manual WP admin upload. No git hooks to production.
 - **Content**: Every programmatic city page must have 500+ words of unique, city-specific content. Google penalizes thin YMYL programmatic pages.
 - **Legal**: Medical disclaimer + FTC affiliate disclosure on every page. Cookie consent must satisfy CCPA (separate advertising cookie opt-out). Never make health claims or provide medical advice.
