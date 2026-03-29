@@ -13,7 +13,12 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 ## Tech Stack
 
 - **CMS**: WordPress 6.x on Hostinger
-- **Theme**: Kadence (free tier) with custom child theme — replaces GeneratePress
+- **Theme**: Kadence (free tier) with custom child theme
+- **Caching**: LiteSpeed Cache (free) — server-native on Hostinger's LiteSpeed stack. Do not install WP Rocket or any other caching plugin alongside LiteSpeed Cache — they will conflict. LiteSpeed Cache handles all caching and JS/CSS optimization and integrates at the server level in a way generic caching plugins cannot.
+- **Affiliate links**: ThirstyAffiliates (free tier) — all affiliate links managed through ThirstyAffiliates cloaked `/go/` URLs
+- **Cookie consent**: CookieYes (free tier) — manages GDPR/CCPA consent banner
+- **Analytics**: Google Analytics 4 + Microsoft Clarity (free) — GA4 for traffic/conversions, Clarity for session recordings and heatmaps
+- **Automation**: n8n + Make.com — workflow automation for content ops, reporting, and alerts. Automation scripts do not live in this repo.
 - **Custom tools**: React 18, compiled via Vite to standalone JS bundles
 - **Data scripts**: Python 3.11
 - **Maps**: Google Maps Platform (Places API + Maps JavaScript API)
@@ -36,6 +41,9 @@ Custom code for 24hourpharmacy.com, a WordPress-based content site. WordPress co
 6. **FTC affiliate disclosure required on every page with affiliate links.**
 7. **Ad placement zones must be built in from the start.** Use classes: `.ad-zone-header`, `.ad-zone-sidebar`, `.ad-zone-in-content`, `.ad-zone-footer`. Mediavine/Raptive will use these.
 8. **No health claims. No medical advice.** Information and referrals only.
+9. **Affiliate links must be managed through ThirstyAffiliates.** Do not hardcode raw affiliate URLs in templates. Register links in ThirstyAffiliates, use the cloaked `/go/` URLs in templates and shortcodes.
+10. **CookieYes manages the cookie consent banner.** No custom code needed for the banner itself. Ensure GA4 and advertising scripts are loaded conditionally based on CookieYes consent state.
+11. **Microsoft Clarity tracks session recordings and heatmaps.** Install via the WordPress admin or by adding the tracking script to the child theme's `functions.php`.
 
 ## Environment Variables
 
