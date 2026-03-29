@@ -14,13 +14,13 @@
 - [x] **INFRA-05**: Child theme enqueues styles and passes config to widgets via wp_localize_script
 - [ ] **INFRA-06**: Google Maps API key restricted to 24hourpharmacy.com domain in Cloud Console before any widget goes live
 - [ ] **INFRA-07**: All required compliance pages live: /disclaimer/, /affiliate-disclosure/, /privacy-policy/, /terms/, /about/
-- [ ] **INFRA-08**: Medical disclaimer shortcode outputs on every city, pharmacy, and savings page
-- [ ] **INFRA-09**: Affiliate disclosure shortcode outputs on every page with affiliate links
+- [x] **INFRA-08**: Medical disclaimer shortcode outputs on every city, pharmacy, and savings page
+- [x] **INFRA-09**: Affiliate disclosure shortcode outputs on every page with affiliate links
 - [ ] **INFRA-10**: Cookie consent supports separate opt-out flows for analytics vs advertising (CCPA compliant)
 
 ### Content (CONTENT)
 
-- [ ] **CONTENT-01**: City page template (single-city.php) renders: pharmacy finder widget, discount card widget, 500+ word unique content, schema, disclaimer, disclosure, affiliate CTAs
+- [x] **CONTENT-01**: City page template (single-city.php) renders: pharmacy finder widget, discount card widget, 500+ word unique content, schema, disclaimer, disclosure, affiliate CTAs
 - [ ] **CONTENT-02**: Python generator script (generate-city-pages.py) produces unique 500+ word city pages via WP REST API with --dry-run mode
 - [ ] **CONTENT-03**: 10 launch city pages published (top 10 US metros) with real pharmacy data
 - [ ] **CONTENT-04**: 5 core informational articles published (pharmacy savings, GoodRx alternatives, discount cards explained, telehealth fallback, uninsured guide)
@@ -108,10 +108,10 @@
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 5 | Pending |
 | INFRA-07 | Phase 2 | Pending |
-| INFRA-08 | Phase 2 | Pending |
-| INFRA-09 | Phase 2 | Pending |
+| INFRA-08 | Phase 2 | Complete |
+| INFRA-09 | Phase 2 | Complete |
 | INFRA-10 | Phase 5 | Pending |
-| CONTENT-01 | Phase 2 | Pending |
+| CONTENT-01 | Phase 2 | Complete |
 | CONTENT-02 | Phase 4 | Pending |
 | CONTENT-03 | Phase 4 | Pending |
 | CONTENT-04 | Phase 4 | Pending |
