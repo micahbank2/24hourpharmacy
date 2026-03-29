@@ -338,6 +338,85 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
     <div id="tab-calendar" class="tab-panel">
       <div class="calendar-grid" id="calendar-container"></div>
     </div>
+
+    <div id="tab-map" class="tab-panel">
+<div style="max-width:1240px;margin:0 auto;padding:20px 24px">
+<style>
+.pm2-sec{border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.pm2-sh{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;user-select:none;background:var(--surface2);border:none;width:100%;text-align:left;font-family:inherit}
+.pm2-sh:hover{opacity:.88}
+.pm2-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pm2-sht{font-size:13px;font-weight:600;color:var(--text)}
+.pm2-shm{font-size:11px;color:var(--muted);margin-left:auto;margin-right:6px}
+.pm2-chev{font-size:10px;color:var(--muted);display:inline-block;transform:rotate(90deg);transition:transform .2s}
+.pm2-sec.pm2-closed .pm2-chev{transform:rotate(0deg)}
+.pm2-sb{padding:8px 12px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--surface)}
+.pm2-sec.pm2-closed .pm2-sb{display:none}
+.pm2-card{background:var(--surface2);border-radius:6px;padding:8px 10px}
+.pm2-full{grid-column:1/-1}
+.pm2-cn{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.pm2-cd{font-size:11px;color:var(--muted);line-height:1.55}
+.pm2-warn{font-size:10px;font-weight:600;color:var(--danger);margin-top:4px}
+.pm2-flow{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:5px}
+.pm2-fs{font-size:10px;padding:2px 7px;background:var(--bg);border-radius:4px;color:var(--text);border:1px solid var(--border);white-space:nowrap}
+.pm2-fa{color:var(--muted);font-size:11px}
+@media(max-width:600px){.pm2-sb{grid-template-columns:1fr}}
+</style>
+<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:var(--text)">Project map</div><div style="font-size:12px;color:var(--muted);margin-top:3px">How the site is built, where everything lives, and how the pieces connect. Click any section to expand.</div></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+
+<div class="pm2-sec" id="pm2_1">
+<button class="pm2-sh" onclick="pmt2('pm2_1')"><div class="pm2-dot" style="background:#185FA5"></div><span class="pm2-sht">Infrastructure</span><span class="pm2-shm">Hosting, DNS, CDN</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">GitHub (micahbank2/24hourpharmacy)</div><div class="pm2-cd">Where all the custom code lives. Only stuff we wrote — the theme tweaks, our plugin, the interactive tools, and the data scripts. WordPress itself and third-party plugins aren't stored here.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Hostinger (shared, ~$3/mo)</div><div class="pm2-cd">The server that runs the WordPress site. Comes with a fast built-in web server (LiteSpeed). Backups run weekly on their end — we also do daily backups to Google Drive with UpdraftPlus for extra safety.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Cloudflare (free tier)</div><div class="pm2-cd">Sits between visitors and the server. Speeds up page loads, blocks attacks, forces secure connections, and stops bots. Also protects the login page from brute-force attempts.</div></div>
+<div class="pm2-card"><div class="pm2-cn">GoDaddy (domain registrar)</div><div class="pm2-cd">Where the 24hourpharmacy.com domain is registered. Transferred to GoDaddy in March 2026. Next steps: point DNS to Hostinger and turn on auto-renew.</div><div class="pm2-warn">Action needed: point DNS to Hostinger and enable auto-renew</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_2">
+<button class="pm2-sh" onclick="pmt2('pm2_2')"><div class="pm2-dot" style="background:#0F6E56"></div><span class="pm2-sht">WordPress layer</span><span class="pm2-shm">Lives on Hostinger — not in git</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">Kadence (free tier) + child theme</div><div class="pm2-cd">The site's design framework. The base Kadence theme lives on the server; our customizations are in a child theme that's saved in GitHub. Everything is designed phone-first since most visitors are on mobile.</div></div>
+<div class="pm2-card"><div class="pm2-cn">LiteSpeed Cache (free)</div><div class="pm2-cd">Makes pages load fast by saving pre-built copies so the server doesn't rebuild them for every visitor. Built into the Hostinger server, so it works better than any add-on caching plugin could.</div><div class="pm2-warn">Never install WP Rocket on this site — they conflict</div></div>
+<div class="pm2-card"><div class="pm2-cn">ThirstyAffiliates</div><div class="pm2-cd">Manages all our affiliate links in one place. Instead of pasting raw partner URLs everywhere, every link goes through a clean /go/ redirect that also tracks clicks. The actual affiliate codes are stored in WordPress settings, not in the code.</div></div>
+<div class="pm2-card"><div class="pm2-cn">RankMath + Wordfence + UpdraftPlus + CookieYes + GA4 + Clarity</div><div class="pm2-cd">The supporting plugin stack: SEO optimization, site security with login protection, daily backups to Google Drive, cookie consent for privacy laws, Google Analytics for traffic data, and Microsoft Clarity for watching how people use the site.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_3">
+<button class="pm2-sh" onclick="pmt2('pm2_3')"><div class="pm2-dot" style="background:#534AB7"></div><span class="pm2-sht">Custom code</span><span class="pm2-shm">In the GitHub repo, built with Claude Code</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">Kadence child theme (PHP)</div><div class="pm2-cd">The page templates we built: city pages (the main money pages), individual pharmacy listings, the homepage with location search, state directory pages, and the savings hub. Every page includes structured data for Google and has ad placement spots ready to go.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Custom plugin: 24hr-pharmacy-tools</div><div class="pm2-cd">Creates the City and Pharmacy content types in WordPress, adds structured data so Google understands what each page is, and loads the interactive tools onto pages. Also has a settings screen where affiliate codes are stored safely.</div></div>
+<div class="pm2-card"><div class="pm2-cn">React widgets (compiled via Vite)</div><div class="pm2-cd">4 interactive tools visitors can use: Pharmacy Finder (searches nearby pharmacies using your location), Discount Card (shows savings cards and drug prices), Price Checker, and Open Now Checker. They load in the background so they never slow down the page.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Python data scripts</div><div class="pm2-cd">Scripts that build city pages automatically. One looks up pharmacy info from Google for each city and creates draft pages in WordPress. Another refreshes data for cities we've already published. Results are saved locally so we don't pay Google twice for the same lookup.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_4">
+<button class="pm2-sh" onclick="pmt2('pm2_4')"><div class="pm2-dot" style="background:#993C1D"></div><span class="pm2-sht">Data pipeline</span><span class="pm2-shm">How 5,000+ city pages get created</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card pm2-full"><div class="pm2-cn">Page creation flow</div><div class="pm2-flow"><span class="pm2-fs">cities.json</span><span class="pm2-fa">→</span><span class="pm2-fs">Python script</span><span class="pm2-fa">→</span><span class="pm2-fs">Google Places API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP REST API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP draft</span><span class="pm2-fa">→</span><span class="pm2-fs">Human review + 500 words</span><span class="pm2-fa">→</span><span class="pm2-fs">Published</span></div></div>
+<div class="pm2-card"><div class="pm2-cn">data/cities.json</div><div class="pm2-cd">A list of 200+ target cities with their coordinates, state, and population. This is the starting point for the page generator. The goal for Phase 4 is to scale up to 5,000+ pages covering suburbs and smaller towns.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Google Places API</div><div class="pm2-cd">Where we get real pharmacy info for each city — names, addresses, phone numbers, hours, and map locations. Google gives $200/mo in free credits. We save the results locally so running the script again doesn't cost extra.</div></div>
+<div class="pm2-card"><div class="pm2-cn">WP REST API auth</div><div class="pm2-cd">How the Python scripts talk to WordPress. They log in with a special app password stored on your computer (never uploaded to GitHub) and create draft pages that are ready for review.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Human review (required)</div><div class="pm2-cd">No page goes live without a real person checking it. Each page needs at least 500 words of unique, city-specific content. Google will penalize auto-generated pages that are too thin, and since this is health-related content, accuracy matters even more.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_5">
+<button class="pm2-sh" onclick="pmt2('pm2_5')"><div class="pm2-dot" style="background:#854F0B"></div><span class="pm2-sht">Revenue streams</span><span class="pm2-shm">6 layers, all pre-revenue</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">1. Prescription discount cards</div><div class="pm2-cd">The biggest long-term play. We earn a small commission every time someone refills a prescription using one of our cards — and since the code stays in the pharmacy system, it keeps paying out. Partners: LowerMyRx (up to $4/fill), NDC ($2-2.50), EzRx, SaveonMeds, RxGo, USARx.</div></div>
+<div class="pm2-card"><div class="pm2-cn">2. Retail pharmacy affiliates</div><div class="pm2-cd">We earn a percentage when someone clicks through to Walgreens (2%), Rite Aid (5.6%), or CVS and makes a purchase. All run through CJ Affiliate. These links sit alongside the discount card offers on city pages.</div></div>
+<div class="pm2-card"><div class="pm2-cn">3. Display ads</div><div class="pm2-cd">Banner and in-content ads. Starting with Google AdSense ($8-15 per thousand views). Once we hit 25K monthly visitors, we can switch to Raptive which pays much more for health content ($30-55 per thousand). Ad spots are already built into every page template.</div></div>
+<div class="pm2-card"><div class="pm2-cn">4. Health insurance leads</div><div class="pm2-cd">We get paid $10-75 each time someone we refer signs up for health insurance through eHealthInsurance. Biggest season is Oct-Jan during open enrollment. We need to apply to MediaAlpha and EverQuote now so those accounts are active before October.</div></div>
+<div class="pm2-card"><div class="pm2-cn">5. Telehealth referrals</div><div class="pm2-cd">Referral fees for online health services. Weight loss (GLP-1) pays the most: Mochi ($90), Fridays ($300), OrderlyMeds ($75). General telehealth like Nurx ($25-75) and Hims/Ro ($50-100+) also available.</div></div>
+<div class="pm2-card"><div class="pm2-cn">6. Direct ads (Phase 3)</div><div class="pm2-cd">Local pharmacies pay us $50-200/mo to be featured on their city's page. This only makes sense once we have real traffic, so it's planned for Phase 3. We'll build an /advertise/ page when the time comes.</div></div>
+</div></div>
+
+</div>
+</div>
+    </div>
+
   </main>
 
   <!-- SIDEBAR -->
@@ -2200,83 +2279,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTab !== 'checklist') switchTab(savedTab);
 });
 </script>
-<div id="tab-map" class="tab-panel">
-<div style="max-width:1240px;margin:0 auto;padding:20px 24px">
-<style>
-.pm2-sec{border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.07)}
-.pm2-sh{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;user-select:none;background:var(--surface2);border:none;width:100%;text-align:left;font-family:inherit}
-.pm2-sh:hover{opacity:.88}
-.pm2-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.pm2-sht{font-size:13px;font-weight:600;color:var(--text)}
-.pm2-shm{font-size:11px;color:var(--muted);margin-left:auto;margin-right:6px}
-.pm2-chev{font-size:10px;color:var(--muted);display:inline-block;transform:rotate(90deg);transition:transform .2s}
-.pm2-sec.pm2-closed .pm2-chev{transform:rotate(0deg)}
-.pm2-sb{padding:8px 12px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--surface)}
-.pm2-sec.pm2-closed .pm2-sb{display:none}
-.pm2-card{background:var(--surface2);border-radius:6px;padding:8px 10px}
-.pm2-full{grid-column:1/-1}
-.pm2-cn{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
-.pm2-cd{font-size:11px;color:var(--muted);line-height:1.55}
-.pm2-warn{font-size:10px;font-weight:600;color:var(--danger);margin-top:4px}
-.pm2-flow{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:5px}
-.pm2-fs{font-size:10px;padding:2px 7px;background:var(--bg);border-radius:4px;color:var(--text);border:1px solid var(--border);white-space:nowrap}
-.pm2-fa{color:var(--muted);font-size:11px}
-@media(max-width:600px){.pm2-sb{grid-template-columns:1fr}}
-</style>
-<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:var(--text)">Project map</div><div style="font-size:12px;color:var(--muted);margin-top:3px">How the site is built, where everything lives, and how the pieces connect. Click any section to expand.</div></div>
-<div style="display:flex;flex-direction:column;gap:8px">
-
-<div class="pm2-sec" id="pm2_1">
-<button class="pm2-sh" onclick="pmt2('pm2_1')"><div class="pm2-dot" style="background:#185FA5"></div><span class="pm2-sht">Infrastructure</span><span class="pm2-shm">Hosting, DNS, CDN</span><span class="pm2-chev">&#9658;</span></button>
-<div class="pm2-sb">
-<div class="pm2-card"><div class="pm2-cn">GitHub (micahbank2/24hourpharmacy)</div><div class="pm2-cd">Where all the custom code lives. Only stuff we wrote — the theme tweaks, our plugin, the interactive tools, and the data scripts. WordPress itself and third-party plugins aren't stored here.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Hostinger (shared, ~$3/mo)</div><div class="pm2-cd">The server that runs the WordPress site. Comes with a fast built-in web server (LiteSpeed). Backups run weekly on their end — we also do daily backups to Google Drive with UpdraftPlus for extra safety.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Cloudflare (free tier)</div><div class="pm2-cd">Sits between visitors and the server. Speeds up page loads, blocks attacks, forces secure connections, and stops bots. Also protects the login page from brute-force attempts.</div></div>
-<div class="pm2-card"><div class="pm2-cn">GoDaddy (domain registrar)</div><div class="pm2-cd">Where the 24hourpharmacy.com domain is registered. Transferred to GoDaddy in March 2026. Next steps: point DNS to Hostinger and turn on auto-renew.</div><div class="pm2-warn">Action needed: point DNS to Hostinger and enable auto-renew</div></div>
-</div></div>
-
-<div class="pm2-sec pm2-closed" id="pm2_2">
-<button class="pm2-sh" onclick="pmt2('pm2_2')"><div class="pm2-dot" style="background:#0F6E56"></div><span class="pm2-sht">WordPress layer</span><span class="pm2-shm">Lives on Hostinger — not in git</span><span class="pm2-chev">&#9658;</span></button>
-<div class="pm2-sb">
-<div class="pm2-card"><div class="pm2-cn">Kadence (free tier) + child theme</div><div class="pm2-cd">The site's design framework. The base Kadence theme lives on the server; our customizations are in a child theme that's saved in GitHub. Everything is designed phone-first since most visitors are on mobile.</div></div>
-<div class="pm2-card"><div class="pm2-cn">LiteSpeed Cache (free)</div><div class="pm2-cd">Makes pages load fast by saving pre-built copies so the server doesn't rebuild them for every visitor. Built into the Hostinger server, so it works better than any add-on caching plugin could.</div><div class="pm2-warn">Never install WP Rocket on this site — they conflict</div></div>
-<div class="pm2-card"><div class="pm2-cn">ThirstyAffiliates</div><div class="pm2-cd">Manages all our affiliate links in one place. Instead of pasting raw partner URLs everywhere, every link goes through a clean /go/ redirect that also tracks clicks. The actual affiliate codes are stored in WordPress settings, not in the code.</div></div>
-<div class="pm2-card"><div class="pm2-cn">RankMath + Wordfence + UpdraftPlus + CookieYes + GA4 + Clarity</div><div class="pm2-cd">The supporting plugin stack: SEO optimization, site security with login protection, daily backups to Google Drive, cookie consent for privacy laws, Google Analytics for traffic data, and Microsoft Clarity for watching how people use the site.</div></div>
-</div></div>
-
-<div class="pm2-sec pm2-closed" id="pm2_3">
-<button class="pm2-sh" onclick="pmt2('pm2_3')"><div class="pm2-dot" style="background:#534AB7"></div><span class="pm2-sht">Custom code</span><span class="pm2-shm">In the GitHub repo, built with Claude Code</span><span class="pm2-chev">&#9658;</span></button>
-<div class="pm2-sb">
-<div class="pm2-card"><div class="pm2-cn">Kadence child theme (PHP)</div><div class="pm2-cd">The page templates we built: city pages (the main money pages), individual pharmacy listings, the homepage with location search, state directory pages, and the savings hub. Every page includes structured data for Google and has ad placement spots ready to go.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Custom plugin: 24hr-pharmacy-tools</div><div class="pm2-cd">Creates the City and Pharmacy content types in WordPress, adds structured data so Google understands what each page is, and loads the interactive tools onto pages. Also has a settings screen where affiliate codes are stored safely.</div></div>
-<div class="pm2-card"><div class="pm2-cn">React widgets (compiled via Vite)</div><div class="pm2-cd">4 interactive tools visitors can use: Pharmacy Finder (searches nearby pharmacies using your location), Discount Card (shows savings cards and drug prices), Price Checker, and Open Now Checker. They load in the background so they never slow down the page.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Python data scripts</div><div class="pm2-cd">Scripts that build city pages automatically. One looks up pharmacy info from Google for each city and creates draft pages in WordPress. Another refreshes data for cities we've already published. Results are saved locally so we don't pay Google twice for the same lookup.</div></div>
-</div></div>
-
-<div class="pm2-sec pm2-closed" id="pm2_4">
-<button class="pm2-sh" onclick="pmt2('pm2_4')"><div class="pm2-dot" style="background:#993C1D"></div><span class="pm2-sht">Data pipeline</span><span class="pm2-shm">How 5,000+ city pages get created</span><span class="pm2-chev">&#9658;</span></button>
-<div class="pm2-sb">
-<div class="pm2-card pm2-full"><div class="pm2-cn">Page creation flow</div><div class="pm2-flow"><span class="pm2-fs">cities.json</span><span class="pm2-fa">→</span><span class="pm2-fs">Python script</span><span class="pm2-fa">→</span><span class="pm2-fs">Google Places API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP REST API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP draft</span><span class="pm2-fa">→</span><span class="pm2-fs">Human review + 500 words</span><span class="pm2-fa">→</span><span class="pm2-fs">Published</span></div></div>
-<div class="pm2-card"><div class="pm2-cn">data/cities.json</div><div class="pm2-cd">A list of 200+ target cities with their coordinates, state, and population. This is the starting point for the page generator. The goal for Phase 4 is to scale up to 5,000+ pages covering suburbs and smaller towns.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Google Places API</div><div class="pm2-cd">Where we get real pharmacy info for each city — names, addresses, phone numbers, hours, and map locations. Google gives $200/mo in free credits. We save the results locally so running the script again doesn't cost extra.</div></div>
-<div class="pm2-card"><div class="pm2-cn">WP REST API auth</div><div class="pm2-cd">How the Python scripts talk to WordPress. They log in with a special app password stored on your computer (never uploaded to GitHub) and create draft pages that are ready for review.</div></div>
-<div class="pm2-card"><div class="pm2-cn">Human review (required)</div><div class="pm2-cd">No page goes live without a real person checking it. Each page needs at least 500 words of unique, city-specific content. Google will penalize auto-generated pages that are too thin, and since this is health-related content, accuracy matters even more.</div></div>
-</div></div>
-
-<div class="pm2-sec pm2-closed" id="pm2_5">
-<button class="pm2-sh" onclick="pmt2('pm2_5')"><div class="pm2-dot" style="background:#854F0B"></div><span class="pm2-sht">Revenue streams</span><span class="pm2-shm">6 layers, all pre-revenue</span><span class="pm2-chev">&#9658;</span></button>
-<div class="pm2-sb">
-<div class="pm2-card"><div class="pm2-cn">1. Prescription discount cards</div><div class="pm2-cd">The biggest long-term play. We earn a small commission every time someone refills a prescription using one of our cards — and since the code stays in the pharmacy system, it keeps paying out. Partners: LowerMyRx (up to $4/fill), NDC ($2-2.50), EzRx, SaveonMeds, RxGo, USARx.</div></div>
-<div class="pm2-card"><div class="pm2-cn">2. Retail pharmacy affiliates</div><div class="pm2-cd">We earn a percentage when someone clicks through to Walgreens (2%), Rite Aid (5.6%), or CVS and makes a purchase. All run through CJ Affiliate. These links sit alongside the discount card offers on city pages.</div></div>
-<div class="pm2-card"><div class="pm2-cn">3. Display ads</div><div class="pm2-cd">Banner and in-content ads. Starting with Google AdSense ($8-15 per thousand views). Once we hit 25K monthly visitors, we can switch to Raptive which pays much more for health content ($30-55 per thousand). Ad spots are already built into every page template.</div></div>
-<div class="pm2-card"><div class="pm2-cn">4. Health insurance leads</div><div class="pm2-cd">We get paid $10-75 each time someone we refer signs up for health insurance through eHealthInsurance. Biggest season is Oct-Jan during open enrollment. We need to apply to MediaAlpha and EverQuote now so those accounts are active before October.</div></div>
-<div class="pm2-card"><div class="pm2-cn">5. Telehealth referrals</div><div class="pm2-cd">Referral fees for online health services. Weight loss (GLP-1) pays the most: Mochi ($90), Fridays ($300), OrderlyMeds ($75). General telehealth like Nurx ($25-75) and Hims/Ro ($50-100+) also available.</div></div>
-<div class="pm2-card"><div class="pm2-cn">6. Direct ads (Phase 3)</div><div class="pm2-cd">Local pharmacies pay us $50-200/mo to be featured on their city's page. This only makes sense once we have real traffic, so it's planned for Phase 3. We'll build an /advertise/ page when the time comes.</div></div>
-</div></div>
-
-</div>
-</div>
-</div>
 
 <script>function pmt2(id){document.getElementById(id).classList.toggle('pm2-closed')}</script>
 
