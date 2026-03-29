@@ -13,7 +13,7 @@
 - [x] **INFRA-04**: Plugin outputs valid JSON-LD structured data (LocalBusiness/Pharmacy, WebPage, FAQPage) on all relevant pages
 - [x] **INFRA-05**: Child theme enqueues styles and passes config to widgets via wp_localize_script
 - [ ] **INFRA-06**: Google Maps API key restricted to 24hourpharmacy.com domain in Cloud Console before any widget goes live
-- [ ] **INFRA-07**: All required compliance pages live: /disclaimer/, /affiliate-disclosure/, /privacy-policy/, /terms/, /about/
+- [x] **INFRA-07**: All required compliance pages live: /disclaimer/, /affiliate-disclosure/, /privacy-policy/, /terms/, /about/
 - [x] **INFRA-08**: Medical disclaimer shortcode outputs on every city, pharmacy, and savings page
 - [x] **INFRA-09**: Affiliate disclosure shortcode outputs on every page with affiliate links
 - [ ] **INFRA-10**: Cookie consent supports separate opt-out flows for analytics vs advertising (CCPA compliant)
@@ -107,7 +107,7 @@
 | INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Complete |
 | INFRA-06 | Phase 5 | Pending |
-| INFRA-07 | Phase 2 | Pending |
+| INFRA-07 | Phase 2 | Complete |
 | INFRA-08 | Phase 2 | Complete |
 | INFRA-09 | Phase 2 | Complete |
 | INFRA-10 | Phase 5 | Pending |
