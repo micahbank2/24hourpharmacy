@@ -41,12 +41,12 @@ Plans:
 
 **Requirements covered:** INFRA-07, INFRA-08, INFRA-09, CONTENT-01
 
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 02-01-PLAN.md — City page template + functions.php fix + CSS additions
 - [x] 02-02-PLAN.md — Compliance page content (5 files)
-- [ ] 02-03-PLAN.md — Secondary templates (homepage, pharmacy detail, state archive)
+- [x] 02-03-PLAN.md — Secondary templates (homepage, pharmacy detail, state archive)
 
 **Deliverables:**
 - `single-city.php` with correct H1/H2 heading hierarchy, all ad zones, disclaimer shortcode, disclosure shortcode, affiliate CTA blocks
@@ -206,7 +206,7 @@ Plans:
 | Phase | Name | Requirements | Key Risk |
 |-------|------|-------------|----------|
 | 1 | WordPress Plugin Foundation | INFRA-01–05 | PHP stub implementation quality |
-| 2 | 2/3 | In Progress|  |
+| 2 | 3/3 | Complete   | 2026-03-29 |
 | 3 | React Widgets | WIDGET-01–04 | Google Places API costs, async loading |
 | 4 | Content Pipeline + Launch Content | CONTENT-02–04, PIPE-01–02, PIPE-04 | Thin content penalty if <500 words |
 | 5 | SEO & Technical Foundation | INFRA-06, INFRA-10, SEO-01–06, WIDGET-05 | Rocket Loader breaking widgets |
