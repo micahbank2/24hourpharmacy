@@ -89,6 +89,20 @@ get_header();
 				<li class="city-list__item">
 					<a href="<?php the_permalink(); ?>" class="city-list__link">
 						<?php the_title(); ?>
+						<?php
+						$pharmacy_count = get_post_meta( get_the_ID(), '_city_pharmacy_count', true );
+						if ( $pharmacy_count ) :
+						?>
+						<span class="city-list__count">
+							<?php
+							printf(
+								/* translators: %d: number of pharmacies */
+								esc_html( _n( '%d pharmacy', '%d pharmacies', (int) $pharmacy_count, '24hourpharmacy' ) ),
+								(int) $pharmacy_count
+							);
+							?>
+						</span>
+						<?php endif; ?>
 					</a>
 				</li>
 				<?php endwhile; ?>
@@ -110,22 +124,12 @@ get_header();
 
 	</main><!-- #main -->
 
-	<?php get_sidebar(); ?>
-
-	<!-- Ad Zone: Sidebar -->
-	<aside class="ad-zone-sidebar" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></aside>
-
 </div><!-- #primary -->
 
 <!-- Ad Zone: Footer -->
 <div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
-<!-- Medical Disclaimer -->
-<div class="medical-disclaimer" role="note">
-	<p>
-		<strong><?php esc_html_e( 'Medical Disclaimer:', '24hourpharmacy' ); ?></strong>
-		<?php esc_html_e( 'Information on this site is provided for reference only and does not constitute medical advice.', '24hourpharmacy' ); ?>
-	</p>
-</div>
+<!-- Medical Disclaimer (shortcode — single source of truth) -->
+<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
 
 <?php get_footer(); ?>

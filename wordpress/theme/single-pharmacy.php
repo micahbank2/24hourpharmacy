@@ -106,6 +106,9 @@ get_header();
 		<!-- Ad Zone: Header -->
 		<div class="ad-zone-header" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
+		<!-- FTC Affiliate Disclosure (shortcode — pharmacy pages may link to affiliate discount cards) -->
+		<?php echo do_shortcode( '[affiliate_disclosure]' ); ?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'pharmacy-page' ); ?>>
@@ -188,6 +191,43 @@ get_header();
 				<!-- Post body content (set in WP editor) -->
 				<?php the_content(); ?>
 
+				<!-- Nearby Cities (D-08): links to same-state city pages for internal linking -->
+				<section class="nearby-cities-section" aria-label="<?php esc_attr_e( 'Nearby Cities', '24hourpharmacy' ); ?>">
+					<h2><?php esc_html_e( 'Find More 24-Hour Pharmacies Nearby', '24hourpharmacy' ); ?></h2>
+					<?php
+					$pharmacy_state_name = get_post_meta( get_the_ID(), '_pharmacy_state', true );
+					if ( $pharmacy_state_name ) {
+						$state_term = get_term_by( 'name', $pharmacy_state_name, 'state' );
+						if ( $state_term && ! is_wp_error( $state_term ) ) {
+							$nearby_cities = new WP_Query( array(
+								'post_type'      => 'city',
+								'posts_per_page' => 6,
+								'orderby'        => 'title',
+								'order'          => 'ASC',
+								'tax_query'      => array(
+									array(
+										'taxonomy' => 'state',
+										'field'    => 'term_id',
+										'terms'    => $state_term->term_id,
+									),
+								),
+							) );
+							if ( $nearby_cities->have_posts() ) {
+								echo '<ul class="city-list">';
+								while ( $nearby_cities->have_posts() ) {
+									$nearby_cities->the_post();
+									echo '<li class="city-list__item"><a href="' . esc_url( get_permalink() ) . '" class="city-list__link">' . esc_html( get_the_title() ) . '</a></li>';
+								}
+								echo '</ul>';
+								wp_reset_postdata();
+							} else {
+								echo '<p>' . esc_html__( 'More city pages coming soon.', '24hourpharmacy' ) . '</p>';
+							}
+						}
+					}
+					?>
+				</section><!-- .nearby-cities-section -->
+
 			</div><!-- .entry-content -->
 
 		</article><!-- #post-## -->
@@ -198,22 +238,12 @@ get_header();
 
 	</main><!-- #main -->
 
-	<?php get_sidebar(); ?>
-
-	<!-- Ad Zone: Sidebar -->
-	<aside class="ad-zone-sidebar" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></aside>
-
 </div><!-- #primary -->
 
 <!-- Ad Zone: Footer -->
 <div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
-<!-- Medical Disclaimer -->
-<div class="medical-disclaimer" role="note">
-	<p>
-		<strong><?php esc_html_e( 'Medical Disclaimer:', '24hourpharmacy' ); ?></strong>
-		<?php esc_html_e( 'The information on this page is for informational purposes only and does not constitute medical advice. Always consult a licensed pharmacist or healthcare provider with questions about your medications.', '24hourpharmacy' ); ?>
-	</p>
-</div>
+<!-- Medical Disclaimer (shortcode — single source of truth) -->
+<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
 
 <?php get_footer(); ?>
