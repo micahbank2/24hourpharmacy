@@ -5,6 +5,9 @@
  * @package 24HourPharmacy
  */
 
+// Suppress Kadence sidebar injection — full-width single-column layout.
+add_filter( 'kadence_display_sidebar', '__return_false' );
+
 // Gather meta for structured data and content.
 $city_name    = get_the_title();
 $state_terms  = get_the_terms( get_the_ID(), 'state' );
@@ -114,10 +117,8 @@ get_header();
 		<!-- Ad Zone: Header -->
 		<div class="ad-zone-header" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
-		<!-- FTC Affiliate Disclosure -->
-		<div class="ftc-disclosure">
-			<p><?php esc_html_e( 'Disclosure: This page contains affiliate links. We may earn a commission when you use a discount card or make a purchase through our links, at no extra cost to you.', '24hourpharmacy' ); ?></p>
-		</div>
+		<!-- FTC Affiliate Disclosure (via shortcode — class-shortcodes.php) -->
+		<?php echo do_shortcode( '[affiliate_disclosure]' ); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
@@ -140,13 +141,13 @@ get_header();
 
 			<div class="entry-content">
 
-				<!-- Pharmacy Finder Widget (async React bundle via shortcode) -->
+				<!-- Pharmacy Finder Widget — hero element (async React bundle via shortcode) -->
 				<section class="pharmacy-finder-section" aria-label="<?php esc_attr_e( 'Pharmacy Finder', '24hourpharmacy' ); ?>">
 					<h2><?php esc_html_e( 'Find a Pharmacy Open Now', '24hourpharmacy' ); ?></h2>
 					<?php echo do_shortcode( '[pharmacy_finder]' ); ?>
 				</section>
 
-				<!-- Ad Zone: In-Content (above fold editorial) -->
+				<!-- Ad Zone: In-Content -->
 				<div class="ad-zone-in-content" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
 				<!-- City editorial content -->
@@ -230,32 +231,54 @@ get_header();
 
 				</section><!-- .city-content-section -->
 
+				<!-- Discount Card Widget -->
+				<section class="discount-card-section" aria-label="<?php esc_attr_e( 'Prescription Discount Card', '24hourpharmacy' ); ?>">
+					<h2><?php esc_html_e( 'Save on Prescriptions', '24hourpharmacy' ); ?></h2>
+					<?php echo do_shortcode( '[discount_card]' ); ?>
+				</section>
+
+				<!-- Affiliate CTA Cards (D-04) -->
+				<section class="affiliate-cta-section" aria-label="<?php esc_attr_e( 'Save on Prescriptions', '24hourpharmacy' ); ?>">
+					<h2><?php esc_html_e( 'Prescription Savings Options', '24hourpharmacy' ); ?></h2>
+					<div class="affiliate-cta-cards">
+						<div class="affiliate-cta-card">
+							<p class="affiliate-cta-card__name"><?php esc_html_e( 'GoodRx', '24hourpharmacy' ); ?></p>
+							<p class="affiliate-cta-card__copy"><?php esc_html_e( 'Free prescription discount card accepted at 70,000+ pharmacies nationwide.', '24hourpharmacy' ); ?></p>
+							<a href="/go/goodrx/" class="affiliate-cta-card__btn" rel="sponsored noopener" target="_blank">
+								<?php esc_html_e( 'Get Free Card', '24hourpharmacy' ); ?>
+							</a>
+						</div>
+						<div class="affiliate-cta-card">
+							<p class="affiliate-cta-card__name"><?php esc_html_e( 'SingleCare', '24hourpharmacy' ); ?></p>
+							<p class="affiliate-cta-card__copy"><?php esc_html_e( 'Compare prices and save up to 80% on prescription medications.', '24hourpharmacy' ); ?></p>
+							<a href="/go/singlecare/" class="affiliate-cta-card__btn" rel="sponsored noopener" target="_blank">
+								<?php esc_html_e( 'Compare Prices', '24hourpharmacy' ); ?>
+							</a>
+						</div>
+						<div class="affiliate-cta-card">
+							<p class="affiliate-cta-card__name"><?php esc_html_e( 'Amazon Pharmacy', '24hourpharmacy' ); ?></p>
+							<p class="affiliate-cta-card__copy"><?php esc_html_e( 'Transparent pricing and free delivery on prescription medications.', '24hourpharmacy' ); ?></p>
+							<a href="/go/amazon-pharmacy/" class="affiliate-cta-card__btn" rel="sponsored noopener" target="_blank">
+								<?php esc_html_e( 'Shop Now', '24hourpharmacy' ); ?>
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<!-- Medical Disclaimer (via shortcode — class-shortcodes.php) -->
+				<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
+
 			</div><!-- .entry-content -->
 
 		</article><!-- #post-## -->
 
 		<?php endwhile; ?>
 
-		<?php do_action( 'kadence_after_content' ); ?>
+		<!-- Ad Zone: Footer -->
+		<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
 
 	</main><!-- #main -->
 
-	<?php get_sidebar(); ?>
-
-	<!-- Ad Zone: Sidebar -->
-	<aside class="ad-zone-sidebar" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></aside>
-
 </div><!-- #primary -->
-
-<!-- Ad Zone: Footer -->
-<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
-
-<!-- Medical Disclaimer -->
-<div class="medical-disclaimer" role="note">
-	<p>
-		<strong><?php esc_html_e( 'Medical Disclaimer:', '24hourpharmacy' ); ?></strong>
-		<?php esc_html_e( 'The information on this page is for informational purposes only and does not constitute medical advice. Consult a licensed healthcare provider before making any medical decisions.', '24hourpharmacy' ); ?>
-	</p>
-</div>
 
 <?php get_footer(); ?>
