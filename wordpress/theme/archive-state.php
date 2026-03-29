@@ -5,6 +5,9 @@
  * @package 24HourPharmacy
  */
 
+// Remove sidebar on state archive pages — full-width layout.
+add_filter( 'kadence_display_sidebar', '__return_false' );
+
 $queried_object = get_queried_object();
 $state_name     = $queried_object ? esc_html( $queried_object->name ) : esc_html__( 'This State', '24hourpharmacy' );
 $state_slug     = $queried_object ? $queried_object->slug : '';
@@ -122,14 +125,14 @@ get_header();
 
 		<?php do_action( 'kadence_after_content' ); ?>
 
+		<!-- Ad Zone: Footer -->
+		<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
+
+		<!-- Medical Disclaimer (shortcode — single source of truth) -->
+		<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
+
 	</main><!-- #main -->
 
 </div><!-- #primary -->
-
-<!-- Ad Zone: Footer -->
-<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
-
-<!-- Medical Disclaimer (shortcode — single source of truth) -->
-<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
 
 <?php get_footer(); ?>

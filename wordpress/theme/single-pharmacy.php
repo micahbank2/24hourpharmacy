@@ -5,6 +5,9 @@
  * @package 24HourPharmacy
  */
 
+// Remove sidebar on pharmacy pages — full-width layout.
+add_filter( 'kadence_display_sidebar', '__return_false' );
+
 // Pharmacy meta fields (set by generate-city-pages.py or manually via WP admin).
 $pharmacy_name    = get_the_title();
 $address          = get_post_meta( get_the_ID(), '_pharmacy_address', true );
@@ -236,14 +239,14 @@ get_header();
 
 		<?php do_action( 'kadence_after_content' ); ?>
 
+		<!-- Ad Zone: Footer -->
+		<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
+
+		<!-- Medical Disclaimer (shortcode — single source of truth) -->
+		<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
+
 	</main><!-- #main -->
 
 </div><!-- #primary -->
-
-<!-- Ad Zone: Footer -->
-<div class="ad-zone-footer" aria-label="<?php esc_attr_e( 'Advertisement', '24hourpharmacy' ); ?>"></div>
-
-<!-- Medical Disclaimer (shortcode — single source of truth) -->
-<?php echo do_shortcode( '[medical_disclaimer]' ); ?>
 
 <?php get_footer(); ?>
