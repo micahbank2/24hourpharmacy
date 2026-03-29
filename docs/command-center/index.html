@@ -278,6 +278,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
   <button class="tab-btn" data-tab="links">Quick links</button>
   <button class="tab-btn" data-tab="metrics">Metrics</button>
   <button class="tab-btn" data-tab="calendar">Calendar</button>
+  <button class="tab-btn" data-tab="map">Project Map</button>
 </nav>
 
 <div class="main-layout">
@@ -2199,5 +2200,85 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTab !== 'checklist') switchTab(savedTab);
 });
 </script>
+<div id="tab-map" class="tab-panel">
+<div style="max-width:1240px;margin:0 auto;padding:20px 24px">
+<style>
+.pm2-sec{border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:8px;overflow:hidden;background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.pm2-sh{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;user-select:none;background:var(--surface2);border:none;width:100%;text-align:left;font-family:inherit}
+.pm2-sh:hover{opacity:.88}
+.pm2-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pm2-sht{font-size:13px;font-weight:600;color:var(--text)}
+.pm2-shm{font-size:11px;color:var(--muted);margin-left:auto;margin-right:6px}
+.pm2-chev{font-size:10px;color:var(--muted);display:inline-block;transform:rotate(90deg);transition:transform .2s}
+.pm2-sec.pm2-closed .pm2-chev{transform:rotate(0deg)}
+.pm2-sb{padding:8px 12px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--surface)}
+.pm2-sec.pm2-closed .pm2-sb{display:none}
+.pm2-card{background:var(--surface2);border-radius:6px;padding:8px 10px}
+.pm2-full{grid-column:1/-1}
+.pm2-cn{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.pm2-cd{font-size:11px;color:var(--muted);line-height:1.55}
+.pm2-warn{font-size:10px;font-weight:600;color:var(--danger);margin-top:4px}
+.pm2-flow{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin-top:5px}
+.pm2-fs{font-size:10px;padding:2px 7px;background:var(--bg);border-radius:4px;color:var(--text);border:1px solid var(--border);white-space:nowrap}
+.pm2-fa{color:var(--muted);font-size:11px}
+@media(max-width:600px){.pm2-sb{grid-template-columns:1fr}}
+</style>
+<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:var(--text)">Project map</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Where data lives, how it connects, what each layer does. Click any section to expand.</div></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+
+<div class="pm2-sec" id="pm2_1">
+<button class="pm2-sh" onclick="pmt2('pm2_1')"><div class="pm2-dot" style="background:#185FA5"></div><span class="pm2-sht">Infrastructure</span><span class="pm2-shm">Hosting, DNS, CDN</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">GitHub (micahbank2/24hourpharmacy)</div><div class="pm2-cd">Public repo. Custom code only — no WP core, no plugins. Contains CLAUDE.md, child theme, custom plugin, React widget source, Python data scripts.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Hostinger (shared, ~$3/mo)</div><div class="pm2-cd">WordPress host. LiteSpeed server. hPanel for file/PHP management. Weekly automated backups — supplement with UpdraftPlus daily to Google Drive.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Cloudflare (free tier)</div><div class="pm2-cd">Sits in front of Hostinger. CDN, DDoS, WAF, always-HTTPS, bot blocking. Rate-limits /wp-login.php. Blocks /xmlrpc.php as backup to Wordfence.</div></div>
+<div class="pm2-card"><div class="pm2-cn">ExonHost (domain registrar)</div><div class="pm2-cd">24hourpharmacy.com domain. Transfer in progress — registrant email mismatch pending resolution. Auto-renew must be enabled once transfer completes.</div><div class="pm2-warn">Action needed: registrant email update in ExonHost</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_2">
+<button class="pm2-sh" onclick="pmt2('pm2_2')"><div class="pm2-dot" style="background:#0F6E56"></div><span class="pm2-sht">WordPress layer</span><span class="pm2-shm">Lives on Hostinger — not in git</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">Kadence (free tier) + child theme</div><div class="pm2-cd">Parent theme on server. Child theme is in git. Mobile-first — 70%+ traffic is mobile, design at 375px min. Uses Kadence CSS variables in React widgets (no Tailwind).</div></div>
+<div class="pm2-card"><div class="pm2-cn">LiteSpeed Cache (free)</div><div class="pm2-cd">Server-native caching — integrates at the LiteSpeed server level. Handles all caching and JS/CSS optimization.</div><div class="pm2-warn">Never install WP Rocket on this site — they conflict</div></div>
+<div class="pm2-card"><div class="pm2-cn">ThirstyAffiliates</div><div class="pm2-cd">All affiliate links go through cloaked /go/ URLs with click tracking. Raw affiliate URLs never hardcoded. Affiliate codes in wp_options, not in git.</div></div>
+<div class="pm2-card"><div class="pm2-cn">RankMath + Wordfence + UpdraftPlus + CookieYes + GA4 + Clarity</div><div class="pm2-cd">SEO, security (2FA, brute-force, firewall), daily backups to Google Drive, GDPR/CCPA consent, analytics, session recordings.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_3">
+<button class="pm2-sh" onclick="pmt2('pm2_3')"><div class="pm2-dot" style="background:#534AB7"></div><span class="pm2-sht">Custom code</span><span class="pm2-shm">In the GitHub repo, built with Claude Code</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">Kadence child theme (PHP)</div><div class="pm2-cd">Templates: City page (core revenue page), Pharmacy listing, Homepage with geolocation search, State archive, Savings hub. JSON-LD schema on every page. Ad zone CSS classes pre-built into every template.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Custom plugin: 24hr-pharmacy-tools</div><div class="pm2-cd">Registers City and Pharmacy custom post types. Generates LocalBusiness + FAQPage JSON-LD. Registers shortcodes that load React widgets. Admin settings page stores affiliate codes in wp_options (never in git).</div></div>
+<div class="pm2-card"><div class="pm2-cn">React widgets (compiled via Vite)</div><div class="pm2-cd">4 tools: Pharmacy Finder (Google Places + geolocation), Discount Card (affiliate card display + drug price search), Price Checker, Open Now Checker. Each compiles to a single IIFE bundle. Loaded async by the plugin — never blocks page render.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Python data scripts</div><div class="pm2-cd">generate-city-pages.py: queries Google Places per city, pushes City + Pharmacy posts as WP drafts via REST API. sync-pharmacy-data.py refreshes existing data. Rate-limited, raw API responses cached locally.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_4">
+<button class="pm2-sh" onclick="pmt2('pm2_4')"><div class="pm2-dot" style="background:#993C1D"></div><span class="pm2-sht">Data pipeline</span><span class="pm2-shm">How 5,000+ city pages get created</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card pm2-full"><div class="pm2-cn">Page creation flow</div><div class="pm2-flow"><span class="pm2-fs">cities.json</span><span class="pm2-fa">→</span><span class="pm2-fs">Python script</span><span class="pm2-fa">→</span><span class="pm2-fs">Google Places API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP REST API</span><span class="pm2-fa">→</span><span class="pm2-fs">WP draft</span><span class="pm2-fa">→</span><span class="pm2-fs">Human review + 500 words</span><span class="pm2-fa">→</span><span class="pm2-fs">Published</span></div></div>
+<div class="pm2-card"><div class="pm2-cn">data/cities.json</div><div class="pm2-cd">200+ target cities with lat/lng, state, population. Input file for the generator. Phase 4 target is 5,000+ location pages (suburb level).</div></div>
+<div class="pm2-card"><div class="pm2-cn">Google Places API</div><div class="pm2-cd">Pharmacy data per city: name, address, phone, hours, coordinates, place_id. $200/mo free credit. Raw responses cached locally so re-runs don't re-bill the API.</div></div>
+<div class="pm2-card"><div class="pm2-cn">WP REST API auth</div><div class="pm2-cd">Script authenticates with a WordPress Application Password stored in local .env (never in git). Creates City and Pharmacy posts as drafts for human review.</div></div>
+<div class="pm2-card"><div class="pm2-cn">Human review (required)</div><div class="pm2-cd">Every generated page needs 500+ words of unique city-specific content before publishing. Google penalizes thin programmatic pages. YMYL content requires verified data.</div></div>
+</div></div>
+
+<div class="pm2-sec pm2-closed" id="pm2_5">
+<button class="pm2-sh" onclick="pmt2('pm2_5')"><div class="pm2-dot" style="background:#854F0B"></div><span class="pm2-sht">Revenue streams</span><span class="pm2-shm">6 layers, all pre-revenue</span><span class="pm2-chev">&#9658;</span></button>
+<div class="pm2-sb">
+<div class="pm2-card"><div class="pm2-cn">1. Prescription discount cards</div><div class="pm2-cd">Highest long-term value. Per-use recurring commission on every refill — affiliate code stored permanently in pharmacy system. LowerMyRx (up to $4/fill), NDC ($2-2.50), EzRx, SaveonMeds, RxGo, USARx.</div></div>
+<div class="pm2-card"><div class="pm2-cn">2. Retail pharmacy affiliates</div><div class="pm2-cd">Walgreens (2%), Rite Aid (5.6%), CVS — all via CJ Affiliate. Layered alongside discount card CTAs on city pages.</div></div>
+<div class="pm2-card"><div class="pm2-cn">3. Display ads</div><div class="pm2-cd">AdSense at launch ($8-15 RPM). Raptive at 25K sessions ($30-55 RPM for health). Ad zone CSS classes pre-built into every template so ad networks can place automatically.</div></div>
+<div class="pm2-card"><div class="pm2-cn">4. Health insurance leads</div><div class="pm2-cd">eHealthInsurance via CJ: $10-75 CPA, 120-day cookie. Revenue peaks Oct-Jan during ACA and Medicare open enrollment. Must apply to MediaAlpha + EverQuote NOW so accounts are live before October.</div></div>
+<div class="pm2-card"><div class="pm2-cn">5. Telehealth referrals</div><div class="pm2-cd">GLP-1 highest CPA: Mochi ($90), Fridays ($300), OrderlyMeds ($75). General: Nurx ($25-75 via PerformCB), Hims/Ro ($50-100+ via Impact).</div></div>
+<div class="pm2-card"><div class="pm2-cn">6. Direct ads (Phase 3)</div><div class="pm2-cd">Independent pharmacies pay $50-200/mo for featured placement on city pages. Needs traffic before outreach makes sense. /advertise/ page planned for Phase 3.</div></div>
+</div></div>
+
+</div>
+</div>
+</div>
+
+<script>function pmt2(id){document.getElementById(id).classList.toggle('pm2-closed')}</script>
+
 </body>
 </html>
