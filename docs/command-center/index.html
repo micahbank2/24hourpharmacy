@@ -442,10 +442,10 @@ const PHASES = [
     borderColor: '#475569',
     defaultOpen: true,
     tasks: [
-      { id: 'f1', text: 'Purchase Hostinger Business hosting plan (minimum for custom plugins)', hint: 'Hostinger is your web host -- this is where WordPress and all site files live. ExonHost (your domain registrar) and Hostinger (your web host) are two separate things and do not need to be at the same company. Business plan is the minimum; shared starter plans do not support the custom plugin architecture this site requires.' },
-      { id: 'f2', text: '[WAITING] Domain transfer in progress -- 24hourpharmacy.com moving to ExonHost', hint: 'Transfer initiated 3/25/2026. ExonHost is your domain registrar (holds the domain name and handles renewal). Hostinger is your web host (where WordPress lives). These are separate services. The transfer typically completes in 5-7 days. Watch your email for any approval request -- if you get one, click approve immediately.' },
-      { id: 'f2b', text: 'Enable auto-renew for 24hourpharmacy.com at ExonHost once transfer completes', hint: 'Log into my.exonhost.com after the transfer confirms. Find the domain and turn on auto-renew. Domain renews at $15.99/yr. Keep your payment method current -- the only way you lose this domain is if auto-renew fails because your card expired or was replaced. Set a calendar reminder once a year to verify the card on file is still valid.' },
-      { id: 'f2c', text: 'Point nameservers from ExonHost to Hostinger after hosting is set up', hint: 'Once you have a Hostinger hosting account, Hostinger will give you two nameserver addresses (like ns1.hostinger.com and ns2.hostinger.com). Log into ExonHost at my.exonhost.com, go to Domains > Manage DNS, and swap in Hostinger\'s nameservers. This is what connects your domain name to your hosting account. DNS propagation takes up to 24 hours.' },
+      { id: 'f1', text: 'Purchase Hostinger Business hosting plan (minimum for custom plugins)', hint: 'Hostinger is your web host -- this is where WordPress and all site files live. GoDaddy (your domain registrar) and Hostinger (your web host) are two separate things and do not need to be at the same company. Business plan is the minimum; shared starter plans do not support the custom plugin architecture this site requires.' },
+      { id: 'f2', text: '[DONE] Domain transferred to GoDaddy -- 24hourpharmacy.com active at GoDaddy as of March 2026', hint: 'Domain transfer complete. GoDaddy is your domain registrar (holds the domain name and handles renewal). Hostinger is your web host (where WordPress lives). These are separate services.' },
+      { id: 'f2b', text: 'Enable auto-renew for 24hourpharmacy.com at GoDaddy', hint: 'Log into GoDaddy account. Find the domain and turn on auto-renew. Keep your payment method current -- the only way you lose this domain is if auto-renew fails because your card expired or was replaced. Set a calendar reminder once a year to verify the card on file is still valid.' },
+      { id: 'f2c', text: 'Point nameservers from GoDaddy to Hostinger after hosting is set up', hint: 'Once you have a Hostinger hosting account, Hostinger will give you two nameserver addresses (like ns1.hostinger.com and ns2.hostinger.com). Log into GoDaddy, go to your domain DNS settings, and swap in Hostinger\'s nameservers. This is what connects your domain name to your hosting account. DNS propagation takes up to 24 hours.' },
       { id: 'f3', text: 'Install WordPress from Hostinger hPanel one-click installer' },
       { id: 'f4', text: 'Install and activate Kadence theme', hint: 'Kadence — confirmed theme, free tier. Includes header/footer builder and starter templates. Claude Code handles CSS customizations.' },
       { id: 'f5', text: 'Deploy Kadence child theme from GitHub repo (Appearance > Themes > Add New > Upload)', hint: 'Upload the Kadence child theme zip built by Claude Code. Contains: single-city.php, front-page.php, archive-state.php, header.php, footer.php, style.css, functions.php.' },
@@ -456,7 +456,7 @@ const PHASES = [
       { id: 'f10', text: 'Install UpdraftPlus and configure daily backups to Google Drive', hint: 'Free tier backs up to Google Drive. Settings: daily backup schedule, keep last 7 backups, back up database and files separately. Test a restore before the site goes live.' },
       { id: 'f11', text: 'Set permalink structure to custom: /city/%postname%/ in Settings > Permalinks' },
       { id: 'f12', text: 'Add security constants to wp-config.php: DISALLOW_FILE_EDIT, FORCE_SSL_ADMIN', hint: 'DISALLOW_FILE_EDIT prevents editing theme/plugin files through WordPress admin (major security risk). FORCE_SSL_ADMIN ensures all admin traffic uses HTTPS.' },
-      { id: 'f13', text: 'Set up Cloudflare (free tier) for CDN, DNS, and DDoS protection', hint: 'Add domain to Cloudflare, update nameservers at ExonHost to point to Cloudflare instead of Hostinger directly. Cloudflare then proxies traffic to Hostinger. Enable: Auto Minify, Always Use HTTPS, Brotli compression. Test Rocket Loader carefully with React widgets - may need to exclude widget scripts. Note: if using Cloudflare, your nameservers point to Cloudflare, and Cloudflare forwards to Hostinger.' },
+      { id: 'f13', text: 'Set up Cloudflare (free tier) for CDN, DNS, and DDoS protection', hint: 'Add domain to Cloudflare, update nameservers at GoDaddy to point to Cloudflare instead of Hostinger directly. Cloudflare then proxies traffic to Hostinger. Enable: Auto Minify, Always Use HTTPS, Brotli compression. Test Rocket Loader carefully with React widgets - may need to exclude widget scripts. Note: if using Cloudflare, your nameservers point to Cloudflare, and Cloudflare forwards to Hostinger.' },
       { id: 'f14', text: 'Restrict Google Maps API key to 24hourpharmacy.com in Google Cloud Console', hint: 'Cloud Console > APIs & Services > Credentials > Edit key. HTTP referrer restrictions: 24hourpharmacy.com/*. API restrictions: Maps JavaScript API, Places API, Geocoding API only. The key is client-side visible, so restriction is essential.' },
       { id: 'f15', text: 'Enter all API keys and affiliate codes in plugin Settings page (never in repo)', hint: 'The custom plugin has a Settings page in WP admin. Store Google Maps key, LowerMyRx BIN/PCN/Group, affiliate IDs. These get passed to React via wp_localize_script - keeps everything out of git.' },
       { id: 'f16', text: 'Set up Google Analytics 4 and add tracking code', hint: 'Install via RankMath or a dedicated GA4 plugin. Create conversion events: affiliate_link_click, phone_tap, widget_interaction. You need conversion data before running any paid traffic.' },
@@ -625,8 +625,8 @@ const PHASES = [
 
 const MILESTONES = [
   { id: 'ms1', text: 'LLC formed and EIN received' },
-  { id: 'ms2', text: 'Domain transfer to ExonHost confirmed' },
-  { id: 'ms2b', text: 'Auto-renew enabled at ExonHost' },
+  { id: 'ms2', text: 'Domain transfer to GoDaddy confirmed' },
+  { id: 'ms2b', text: 'Auto-renew enabled at GoDaddy' },
   { id: 'ms3', text: 'WordPress live with child theme + plugin' },
   { id: 'ms4', text: 'First city page published' },
   { id: 'ms5', text: 'All 10 launch city pages live' },
@@ -1255,7 +1255,7 @@ const LINK_GROUPS = [
   {
     title: 'Your site',
     links: [
-      { abbr:'EX', label:'ExonHost', desc:'Domain registrar -- auto-renew lives here', url:'https://my.exonhost.com/', color:'#22c55e' },
+      { abbr:'GD', label:'GoDaddy', desc:'Domain registrar -- auto-renew lives here', url:'https://www.godaddy.com/', color:'#22c55e' },
       { abbr:'WP', label:'WordPress admin', desc:'Content, pages, settings', url:'https://24hourpharmacy.com/wp-admin/', color:'#2563eb' },
       { abbr:'H', label:'Hostinger hPanel', desc:'Web hosting, files, SSL', url:'https://hpanel.hostinger.com/', color:'#673de6' },
       { abbr:'GH', label:'GitHub repo', desc:'Source code', url:'https://github.com/micahbank2/24hourpharmacy', color:'#1f2937' },
@@ -2232,7 +2232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="pm2-card"><div class="pm2-cn">GitHub (micahbank2/24hourpharmacy)</div><div class="pm2-cd">Where all the custom code lives. Only stuff we wrote — the theme tweaks, our plugin, the interactive tools, and the data scripts. WordPress itself and third-party plugins aren't stored here.</div></div>
 <div class="pm2-card"><div class="pm2-cn">Hostinger (shared, ~$3/mo)</div><div class="pm2-cd">The server that runs the WordPress site. Comes with a fast built-in web server (LiteSpeed). Backups run weekly on their end — we also do daily backups to Google Drive with UpdraftPlus for extra safety.</div></div>
 <div class="pm2-card"><div class="pm2-cn">Cloudflare (free tier)</div><div class="pm2-cd">Sits between visitors and the server. Speeds up page loads, blocks attacks, forces secure connections, and stops bots. Also protects the login page from brute-force attempts.</div></div>
-<div class="pm2-card"><div class="pm2-cn">GoDaddy (domain registrar)</div><div class="pm2-cd">Where the 24hourpharmacy.com domain is registered. Transferred from ExonHost on 2026-03-29, currently processing. Once it's fully active, point DNS to Hostinger and turn on auto-renew.</div><div class="pm2-warn">Action needed: point DNS to Hostinger once transfer finishes processing</div></div>
+<div class="pm2-card"><div class="pm2-cn">GoDaddy (domain registrar)</div><div class="pm2-cd">Where the 24hourpharmacy.com domain is registered. Transferred to GoDaddy in March 2026. Next steps: point DNS to Hostinger and turn on auto-renew.</div><div class="pm2-warn">Action needed: point DNS to Hostinger and enable auto-renew</div></div>
 </div></div>
 
 <div class="pm2-sec pm2-closed" id="pm2_2">

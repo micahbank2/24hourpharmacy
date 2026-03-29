@@ -48,7 +48,7 @@ A working pharmacy finder tool with a branded discount card that earns recurring
 
 - **Stack**: WordPress 6.x on Hostinger, Kadence child theme, React 18 widgets via Vite, Python 3.11 data scripts
 - **Deployment**: Manual — zip theme/plugin → upload via WP admin. No CI/CD. No staging environment.
-- **Infrastructure**: Domain at GoDaddy (transferred from ExonHost 2026-03-29, processing), hosting at Hostinger, CDN via Cloudflare
+- **Infrastructure**: Domain at GoDaddy (transferred March 2026, active), hosting at Hostinger, CDN via Cloudflare
 - **Codebase state**: Scaffold only — all plugin class files are stubs, all widget directories are empty, all PHP templates are stubs. Nothing renders yet.
 - **Revenue model**: Affiliate commissions (discount cards, telehealth, insurance leads, GLP-1, medical alerts, OTC, etc.) + display advertising (AdSense → Raptive). Full playbook in docs/docs/command-center/index.html.
 - **Legal context**: YMYL site. Medical disclaimer required on every page. FTC affiliate disclosure required on every page with affiliate links. Cookie consent must support CCPA separate opt-out flows.
